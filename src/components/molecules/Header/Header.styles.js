@@ -1,0 +1,12 @@
+import styled from 'styled-components'
+
+export const StyledHeader = styled.header`
+  height: 70px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-weight: bold;
+`

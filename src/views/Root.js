@@ -1,23 +1,26 @@
-import logo from 'assets/logo.svg'
+import { GlobalStyle } from 'assets/styles/GlobalStyle'
+import { theme } from 'assets/styles/theme'
+import Footer from 'components/molecules/Footer/Footer'
+import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
+import Header from 'components/molecules/Header/Header'
+import FragranceList from 'components/organism/FragranceList/FragranceList'
+import { ThemeProvider } from 'styled-components'
 
 const Root = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Header>Your Fragnaces</Header>
+      <FragranceList>
+        <FragranceItem />
+        <FragranceItem />
+        <FragranceItem />
+        <FragranceItem />
+        <FragranceItem />
+        <FragranceItem />
+      </FragranceList>
+      <Footer>footer</Footer>
+    </ThemeProvider>
   )
 }
 
