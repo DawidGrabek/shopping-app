@@ -2,10 +2,22 @@ import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
   width: 100vw;
-  height: 90px;
-  position: fixed;
-  bottom: -20px;
+  height: 75px;
+  position: sticky;
+  left: 0px;
+  bottom: 0px;
   background-color: ${({ theme }) => theme.colors.grey};
   border-radius: 35px 35px 0 0;
-  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 8px;
+
+  @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
+    position: static;
+
+    & > svg {
+      display: none;
+    }
+  }
 `

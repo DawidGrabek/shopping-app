@@ -19,7 +19,7 @@ const Root = () => {
         <FragranceItem />
         <FragranceItem />
       </FragranceList>
-      <Footer>footer</Footer>
+      <Footer></Footer>
     </ThemeProvider>
   )
 }

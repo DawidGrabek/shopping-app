@@ -18,4 +18,8 @@ export const theme = {
     m: '15px',
     s: '12px',
   },
+  breakPoints: {
+    l: '1200px',
+    m: '768px',
+  },
 }

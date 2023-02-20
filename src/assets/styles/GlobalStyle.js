@@ -24,4 +24,10 @@ export const GlobalStyle = createGlobalStyle`
   a, button {
     font-family: 'Quicksand', sans-serif;
   }
+
+  #root{
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+  }
 `
