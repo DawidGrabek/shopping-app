@@ -1,9 +1,10 @@
-import React from 'react'
-import { StyledFragranceImage } from './FragranceImage.styles'
-import Image1 from 'assets/images/image1.png'
+import styled from 'styled-components'
 
-const FragranceImage = () => {
-  return <StyledFragranceImage src={Image1} />
-}
-
+const FragranceImage = styled.img.attrs(({ src }) => ({
+  src: src.type,
+}))`
+  height: 75%;
+  max-height: 250px;
+  object-fit: contain;
+`
 export default FragranceImage

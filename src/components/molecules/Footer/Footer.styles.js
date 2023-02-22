@@ -16,6 +16,7 @@ export const StyledFooter = styled.footer`
   @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
     position: static;
 
+    & > div,
     & > svg {
       display: none;
     }

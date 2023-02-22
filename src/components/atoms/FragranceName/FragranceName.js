@@ -1,8 +1,7 @@
-import React from 'react'
-import { StyledFragranceName } from './FragranceName.styles'
+import styled from 'styled-components'
 
-const FragranceName = () => {
-  return <StyledFragranceName>Yves Saint Laurent Y EDP 100ml, 360zł</StyledFragranceName>
-}
-
-export default FragranceName
+export const FragranceName = styled.p`
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fontSize.l};
+  margin: 0.5rem 0.25rem;
+`
