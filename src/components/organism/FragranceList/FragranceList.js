@@ -1,15 +1,19 @@
 import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
 import React from 'react'
-import { StyledFragranceList } from './FragranceList.styles'
+import { Wrapper } from './FragranceList.styles'
 import data from 'data'
+import { useDispatch } from 'react-redux'
+import { add } from 'features/basketSlice'
 
 const FragranceList = () => {
+  const dispatch = useDispatch()
+  const addToBasket = (fragrance) => dispatch(add(fragrance))
   return (
-    <StyledFragranceList>
+    <Wrapper>
       {data.map((props) => (
-        <FragranceItem key={props.name} {...props} />
+        <FragranceItem handleBasket={addToBasket} key={props.name} {...props} />
       ))}
-    </StyledFragranceList>
+    </Wrapper>
   )
 }
 

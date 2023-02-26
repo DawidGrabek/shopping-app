@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
   }
   
   *, *::after, *::before {
@@ -30,4 +31,5 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
+
 `

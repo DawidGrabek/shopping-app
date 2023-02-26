@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-const FragranceImage = styled.img.attrs(({ src }) => ({
-  src: src.type,
-}))`
+const FragranceImage = styled.img`
   height: 75%;
   max-height: 250px;
   object-fit: contain;

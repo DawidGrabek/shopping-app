@@ -9,21 +9,21 @@ const data = [
     name: 'Yves Saint Laurent Y EDP',
     capacity: 100,
     price: 360,
-    src: <YvesSaintLaurentY />,
+    src: YvesSaintLaurentY,
   },
   {
     name: 'Bentley for Men Intense',
     capacity: 100,
     price: 120,
-    src: <BentleyForMenIntense />,
+    src: BentleyForMenIntense,
   },
-  { name: 'Mancera Cedrat Boise', capacity: 120, price: 340, src: <ManceraCedratBoise /> },
-  { name: 'Montale Honey Aoud', capacity: 100, price: 290, src: <MontaleHoneyAoud /> },
+  { name: 'Mancera Cedrat Boise', capacity: 120, price: 340, src: ManceraCedratBoise },
+  { name: 'Montale Honey Aoud', capacity: 100, price: 290, src: MontaleHoneyAoud },
   {
     name: 'Dolce & Gabanna Pour Homme',
     capacity: 100,
     price: 210,
-    src: <DolceGabannaPourHomme />,
+    src: DolceGabannaPourHomme,
   },
 ]
 
