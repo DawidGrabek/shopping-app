@@ -6,7 +6,7 @@ export const theme = {
     darkGrey: '#737C8E',
     black: '#110B11',
     success: '#8FCB81',
-    error: '#DD404B',
+    negative: '#DD404B',
     warning: '#E1D888',
     blue: '#19647E',
     darkGreen: '#568A67',

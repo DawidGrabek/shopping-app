@@ -3,12 +3,14 @@ import styled from 'styled-components'
 export const StyledButton = styled.button`
   font-weight: bold;
   text-align: center;
-  width: 110px;
-  height: 25px;
-  background-color: ${({ theme }) => theme.colors.blue};
+  /* width: 110px; */
+  /* height: 25px; */
+  padding: ${({ isBig }) => (isBig ? '16px 32px' : '8px 18px')};
+  background-color: ${({ theme, isNegative }) =>
+    isNegative ? theme.colors.negative : theme.colors.blue};
   border: none;
   border-radius: 10px;
   color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.fontSize.m};
+  font-size: ${({ theme, isBig }) => (isBig ? theme.fontSize.l : theme.fontSize.m)};
   cursor: pointer;
 `

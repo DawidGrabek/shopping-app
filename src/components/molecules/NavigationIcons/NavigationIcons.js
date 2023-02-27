@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 
 // WARTO SIE ZASTANOWIC TODO
 const NavigationIcons = (props) => {
+  const { setBasketIsOpen } = props
   const basket = useSelector((state) => state.basket)
   const amount = basket.length
 
@@ -19,7 +20,10 @@ const NavigationIcons = (props) => {
       <HouseIcon {...props} name="home" style={{ cursor: 'pointer' }} />
       <SearchIcon {...props} name="search" style={{ cursor: 'pointer' }} />
       <UserIcon {...props} name="profile" style={{ cursor: 'pointer' }} />
-      <BasketWrapper numOfFragrances={amount}>
+      <BasketWrapper
+        numOfFragrances={amount}
+        onClick={(prevState) => setBasketIsOpen((prevState) => !prevState)}
+      >
         <StyledBasketIcon {...props} name="basket" />
         <StyledCircle>{amount}</StyledCircle>
       </BasketWrapper>

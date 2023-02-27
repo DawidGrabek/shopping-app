@@ -1,29 +1,46 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { add } from 'features/basketSlice'
 import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
-import { NewFragranceList, Wrapper } from './BasketList.styles'
+import { ButtonsWrapper, NewFragranceList, TotalPrice, Wrapper } from './BasketList.styles'
+import Button from 'components/atoms/Button/Button'
 
-const BasketList = () => {
+const BasketList = ({ basketIsOpen }) => {
   const dispatch = useDispatch()
   const addToBasket = (fragrance) => dispatch(add(fragrance))
   const basket = useSelector((state) => state.basket)
-  // TODO REMOVE FROM BASKET
-  // PASS PROPER AMOUNT
+  const totalPrice = basket.reduce((acc, { price, amount }) => (acc += price * amount), 0)
 
   return (
-    <Wrapper>
-      <NewFragranceList>
-        {basket.map((props) => (
-          <FragranceItem
-            handleBasket={addToBasket}
-            key={props.name}
-            {...props}
-            height="50%"
-            isBasketList
-          />
-        ))}
-      </NewFragranceList>
-    </Wrapper>
+    <>
+      {basketIsOpen ? (
+        <Wrapper>
+          <NewFragranceList>
+            {basket.map((props) => (
+              <FragranceItem
+                handleBasket={addToBasket}
+                key={props.name}
+                {...props}
+                height="50%"
+                isBasketList
+              />
+            ))}
+
+            <ButtonsWrapper>
+              <Button isNegative isBig>
+                Close
+              </Button>
+              <Button isBig>Proceed</Button>
+            </ButtonsWrapper>
+
+            <TotalPrice>
+              <span>
+                Total Price: <b>{totalPrice}zł</b>
+              </span>
+            </TotalPrice>
+          </NewFragranceList>
+        </Wrapper>
+      ) : null}
+    </>
   )
 }
 

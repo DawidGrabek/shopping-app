@@ -4,7 +4,7 @@ import { Wrapper as FragranceListWrapper } from '../FragranceList/FragranceList.
 
 export const Wrapper = styled.div`
   width: 100%;
-  min-height: 390px;
+  min-height: 300px;
   max-height: 30vh;
   overflow-y: scroll;
   top: 0;
@@ -20,9 +20,28 @@ export const NewFragranceList = styled(FragranceListWrapper)`
   flex-direction: column;
   margin-bottom: 20px;
   width: 100%;
+  align-items: center;
 
   ${FragranceItemWrapper} {
     flex-direction: row;
     justify-content: center;
+  }
+`
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  gap: 15px;
+`
+
+export const TotalPrice = styled.div`
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.grey};
+  padding: 20px 0;
+  text-align: center;
+
+  & > span {
+    font-size: ${({ theme }) => theme.fontSize.xl};
   }
 `

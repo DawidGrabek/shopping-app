@@ -2,10 +2,10 @@ import React from 'react'
 import { StyledFooter } from 'components/molecules/Footer/Footer.styles'
 import NavigationIcons from '../NavigationIcons/NavigationIcons'
 
-const Footer = () => {
+const Footer = (props) => {
   return (
     <StyledFooter>
-      <NavigationIcons />
+      <NavigationIcons {...props} />
     </StyledFooter>
   )
 }
