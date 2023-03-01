@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const StyledFooter = styled.footer`
   width: 100vw;
   height: 75px;
-  position: sticky;
+  position: fixed;
   left: 0px;
   bottom: 0px;
   background-color: ${({ theme }) => theme.colors.grey};

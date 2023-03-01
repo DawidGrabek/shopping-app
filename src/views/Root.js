@@ -4,22 +4,23 @@ import Footer from 'components/molecules/Footer/Footer'
 import Header from 'components/molecules/Header/Header'
 import BasketList from 'components/organism/BasketList/BasketList'
 import FragranceList from 'components/organism/FragranceList/FragranceList'
-import { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 const Root = () => {
-  const [basketIsOpen, setBasketIsOpen] = useState(false)
-
-  console.log(basketIsOpen)
-
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Header>Your Fragnaces</Header>
-      <BasketList basketIsOpen={basketIsOpen} setBasketIsOpen={setBasketIsOpen} />
-      <FragranceList />
-      <Footer setBasketIsOpen={setBasketIsOpen} />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Header>Your Fragnaces</Header>
+        <Routes>
+          <Route path="/basket" element={<BasketList />} />
+          <Route path="/" element={<FragranceList />} />
+        </Routes>
+        <Footer />
+      </ThemeProvider>
+    </Router>
   )
 }
 

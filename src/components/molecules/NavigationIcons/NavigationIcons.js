@@ -8,25 +8,34 @@ import {
 } from 'components/molecules/NavigationIcons/NavigationIcons.styles'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 // WARTO SIE ZASTANOWIC TODO
-const NavigationIcons = (props) => {
-  const { setBasketIsOpen } = props
+
+// export const HouseIconLink = styled.component
+
+const NavigationIcons = ({ setBasketIsOpen }, props) => {
   const basket = useSelector((state) => state.basket)
   const amount = basket.length
 
   return (
     <>
-      <HouseIcon {...props} name="home" style={{ cursor: 'pointer' }} />
+      <Link to="/">
+        <HouseIcon {...props} name="home" style={{ cursor: 'pointer' }} />
+      </Link>
       <SearchIcon {...props} name="search" style={{ cursor: 'pointer' }} />
-      <UserIcon {...props} name="profile" style={{ cursor: 'pointer' }} />
-      <BasketWrapper
-        numOfFragrances={amount}
-        onClick={(prevState) => setBasketIsOpen((prevState) => !prevState)}
-      >
-        <StyledBasketIcon {...props} name="basket" />
-        <StyledCircle>{amount}</StyledCircle>
-      </BasketWrapper>
+      <Link to="profile">
+        <UserIcon {...props} name="profile" style={{ cursor: 'pointer' }} />
+      </Link>
+      <Link to="basket">
+        <BasketWrapper
+          numOfFragrances={amount}
+          onClick={() => setBasketIsOpen((prevState) => !prevState)}
+        >
+          <StyledBasketIcon {...props} name="basket" />
+          <StyledCircle>{amount}</StyledCircle>
+        </BasketWrapper>
+      </Link>
     </>
   )
 }
