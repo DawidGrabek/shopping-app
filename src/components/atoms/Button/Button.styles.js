@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const StyledButton = styled.button`
   font-weight: bold;
+  width: 100%;
   text-align: center;
   padding: ${({ isBig }) => (isBig ? '16px 32px' : '8px 18px')};
   background-color: ${({ theme, isNegative }) =>

@@ -11,7 +11,7 @@ const FragranceList = () => {
   return (
     <Wrapper>
       {data.map((props) => (
-        <FragranceItem handleBasket={addToBasket} key={props.name} {...props} />
+        <FragranceItem addToBasket={addToBasket} key={props.name} {...props} />
       ))}
     </Wrapper>
   )

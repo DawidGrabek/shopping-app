@@ -1,17 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 
-const initialState = []
+const initialState = { basket: [] }
 
 export const basketSlice = createSlice({
   name: 'basket',
   initialState,
   reducers: {
     add: (state, action) => {
-      state.push(action.payload)
+      state.basket.push(action.payload)
+    },
+    edit: (state, action) => {
+      state.basket = state.basket.map((fragrance) =>
+        fragrance.name === action.payload.name ? action.payload : fragrance
+      )
     },
   },
 })
 
-export const { add, getAll } = basketSlice.actions
+export const { add, edit } = basketSlice.actions
 
 export default basketSlice.reducer

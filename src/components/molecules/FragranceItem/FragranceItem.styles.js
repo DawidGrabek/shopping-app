@@ -21,7 +21,7 @@ export const AmountSelect = styled.select`
   border: none;
 `
 
-export const ButtonAndInputWrapper = styled.div`
+export const ButtonAndSelectWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

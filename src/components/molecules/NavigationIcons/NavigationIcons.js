@@ -14,8 +14,8 @@ import { Link } from 'react-router-dom'
 
 // export const HouseIconLink = styled.component
 
-const NavigationIcons = ({ setBasketIsOpen }, props) => {
-  const basket = useSelector((state) => state.basket)
+const NavigationIcons = (props) => {
+  const { basket } = useSelector((state) => state.basket)
   const amount = basket.length
 
   return (
@@ -28,10 +28,7 @@ const NavigationIcons = ({ setBasketIsOpen }, props) => {
         <UserIcon {...props} name="profile" style={{ cursor: 'pointer' }} />
       </Link>
       <Link to="basket">
-        <BasketWrapper
-          numOfFragrances={amount}
-          onClick={() => setBasketIsOpen((prevState) => !prevState)}
-        >
+        <BasketWrapper numOfFragrances={amount}>
           <StyledBasketIcon {...props} name="basket" />
           <StyledCircle>{amount}</StyledCircle>
         </BasketWrapper>
