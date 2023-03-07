@@ -7,13 +7,22 @@ import FragranceList from 'components/organism/FragranceList/FragranceList'
 import { ThemeProvider } from 'styled-components'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import SearchBar from 'components/molecules/SearchBar/SearchBar'
+import { useSelector } from 'react-redux'
 
 const Root = () => {
+  const { isShowingSearchBar } = useSelector((state) => state.searchBarSlice)
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header>Your Fragnaces</Header>
+        {isShowingSearchBar ? (
+          <SearchBar placeHolder={'Dupa'} type={'text'} isBig />
+        ) : (
+          <Header>Your Fragnaces</Header>
+        )}
+
         <Routes>
           <Route path="/basket" element={<BasketList />} />
           <Route path="/" element={<FragranceList />} />

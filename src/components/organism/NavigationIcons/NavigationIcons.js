@@ -5,10 +5,11 @@ import {
   BasketWrapper,
   StyledCircle,
   StyledBasketIcon,
-} from 'components/molecules/NavigationIcons/NavigationIcons.styles'
+} from 'components/organism/NavigationIcons/NavigationIcons.styles'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { toggleSearching } from 'features/searchBarSlice'
 
 // WARTO SIE ZASTANOWIC TODO
 
@@ -16,14 +17,16 @@ import { Link } from 'react-router-dom'
 
 const NavigationIcons = (props) => {
   const { basket } = useSelector((state) => state.basket)
+  const dispatch = useDispatch()
   const amount = basket.length
+  const handleClick = () => dispatch(toggleSearching())
 
   return (
     <>
       <Link to="/">
         <HouseIcon {...props} name="home" style={{ cursor: 'pointer' }} />
       </Link>
-      <SearchIcon {...props} name="search" style={{ cursor: 'pointer' }} />
+      <SearchIcon onClick={handleClick} {...props} name="search" style={{ cursor: 'pointer' }} />
       <Link to="profile">
         <UserIcon {...props} name="profile" style={{ cursor: 'pointer' }} />
       </Link>
