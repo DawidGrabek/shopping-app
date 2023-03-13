@@ -17,11 +17,7 @@ const Root = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        {isShowingSearchBar ? (
-          <SearchBar placeHolder={'Dupa'} type={'text'} isBig />
-        ) : (
-          <Header>Your Fragnaces</Header>
-        )}
+        {isShowingSearchBar ? <SearchBar /> : <Header>Your Fragnaces</Header>}
 
         <Routes>
           <Route path="/basket" element={<BasketList />} />
