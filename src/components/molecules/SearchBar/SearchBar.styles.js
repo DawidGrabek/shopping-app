@@ -1,6 +1,11 @@
 import { Input } from 'components/atoms/Input/Input.styles'
 import styled from 'styled-components'
 
+export const Wrapper = styled.div`
+  width: 100vw;
+  background-color: ${({ theme }) => theme.colors.darkGrey};
+`
+
 export const SearchWrapper = styled.div`
   position: relative;
   padding: 5px 10px;
