@@ -18,7 +18,6 @@ const Root = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         {isShowingSearchBar ? <SearchBar /> : <Header>Your Fragnaces</Header>}
-
         <Routes>
           <Route path="/basket" element={<BasketList />} />
           <Route path="/" element={<FragranceList />} />
