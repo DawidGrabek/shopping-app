@@ -6,7 +6,7 @@ import BasketList from 'components/organism/BasketList/BasketList'
 import FragranceList from 'components/organism/FragranceList/FragranceList'
 import { ThemeProvider } from 'styled-components'
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import SearchBar from 'components/molecules/SearchBar/SearchBar'
 import { useSelector } from 'react-redux'
 
