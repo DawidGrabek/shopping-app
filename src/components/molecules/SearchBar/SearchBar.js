@@ -35,7 +35,6 @@ const SearchBar = () => {
         return item ? item.name : ''
       },
       onSelectedItemChange({ selectedItem }) {
-        console.log(selectedItem)
         handleOpenModal()
         setSelectedItem(selectedItem)
       },

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Button from 'components/atoms/Button/Button'
 import FragranceImage from 'components/atoms/FragranceImage/FragranceImage'
 import { FragranceName } from 'components/atoms/FragranceName/FragranceName'
+import { deleteItem } from 'features/basketSlice'
 
 import { AmountSelect, ButtonAndSelectWrapper, Wrapper } from './FragranceItem.styles'
 
@@ -23,6 +24,7 @@ const FragranceItem = ({
   fragrance,
   isInModal = false,
 }) => {
+  const dispatch = useDispatch()
   const [listAmount, setListAmount] = useState(1)
   const [editableAmount, setEditableAmount] = useState(amount)
   const { basket } = useSelector((state) => state.basket)
@@ -31,10 +33,11 @@ const FragranceItem = ({
     setEditableAmount(amount)
   }, [basket, amount])
 
-  // useEffect(() => {
-  //   // if (editableAmount === 0) console.log('delete')
-  //   // DELETE
-  // }, [editableAmount])
+  useEffect(() => {
+    if (editableAmount === 0) {
+      dispatch(deleteItem())
+    }
+  }, [editableAmount, dispatch])
 
   const handleBasketInput = (e) => {
     editAmount({ name, capacity, price, src, amount: +e.target.value })

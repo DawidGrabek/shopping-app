@@ -14,9 +14,12 @@ export const basketSlice = createSlice({
         fragrance.name === action.payload.name ? action.payload : fragrance
       )
     },
+    deleteItem: (state) => {
+      state.basket = state.basket.filter((fragrance) => fragrance.amount !== 0)
+    },
   },
 })
 
-export const { add, edit } = basketSlice.actions
+export const { add, edit, deleteItem } = basketSlice.actions
 
 export default basketSlice.reducer
