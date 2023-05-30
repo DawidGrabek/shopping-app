@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+
 import Button from 'components/atoms/Button/Button'
 import FragranceImage from 'components/atoms/FragranceImage/FragranceImage'
 import { FragranceName } from 'components/atoms/FragranceName/FragranceName'
+
 import { AmountSelect, ButtonAndSelectWrapper, Wrapper } from './FragranceItem.styles'
-import { useSelector } from 'react-redux'
 
 const arrayFrom0ToN = (N) => Array.from({ length: N + 1 }, (_, i) => i)
 

@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-
 import { ReactComponent as BasketIcon } from 'assets/icons/basket-icon.svg'
+import styled from 'styled-components'
 
 export const BasketWrapper = styled.div`
   position: relative;

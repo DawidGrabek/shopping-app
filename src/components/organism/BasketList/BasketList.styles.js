@@ -1,5 +1,6 @@
-import styled from 'styled-components'
 import { Wrapper as FragranceItemWrapper } from 'components/molecules/FragranceItem/FragranceItem.styles'
+import styled from 'styled-components'
+
 import { Wrapper as FragranceListWrapper } from '../FragranceList/FragranceList.styles'
 
 export const Wrapper = styled.div`

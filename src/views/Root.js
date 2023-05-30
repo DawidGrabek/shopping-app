@@ -1,14 +1,14 @@
+import { useSelector } from 'react-redux'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
+
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
 import { theme } from 'assets/styles/theme'
 import Footer from 'components/molecules/Footer/Footer'
 import Header from 'components/molecules/Header/Header'
+import SearchBar from 'components/molecules/SearchBar/SearchBar'
 import BasketList from 'components/organism/BasketList/BasketList'
 import FragranceList from 'components/organism/FragranceList/FragranceList'
 import { ThemeProvider } from 'styled-components'
-
-import { HashRouter as Router, Route, Routes } from 'react-router-dom'
-import SearchBar from 'components/molecules/SearchBar/SearchBar'
-import { useSelector } from 'react-redux'
 
 const Root = () => {
   const { isShowingSearchBar } = useSelector((state) => state.searchBarSlice)

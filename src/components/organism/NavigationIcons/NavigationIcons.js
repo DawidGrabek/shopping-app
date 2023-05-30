@@ -1,3 +1,7 @@
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 import { ReactComponent as HouseIcon } from 'assets/icons/house-icon.svg'
 import { ReactComponent as SearchIcon } from 'assets/icons/search-icon.svg'
 import { ReactComponent as UserIcon } from 'assets/icons/user-icon.svg'
@@ -6,9 +10,6 @@ import {
   StyledCircle,
   StyledBasketIcon,
 } from 'components/organism/NavigationIcons/NavigationIcons.styles'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { toggleSearching } from 'features/searchBarSlice'
 
 // WARTO SIE ZASTANOWIC TODO

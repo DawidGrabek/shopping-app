@@ -1,10 +1,12 @@
-import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
 import React, { useState } from 'react'
-import useModal from 'hooks/useModal'
-import { Wrapper } from './FragranceList.styles'
-import data from 'data'
 import { useDispatch } from 'react-redux'
+
+import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
+import data from 'data'
 import { add } from 'features/basketSlice'
+import useModal from 'hooks/useModal'
+
+import { Wrapper } from './FragranceList.styles'
 
 const FragranceList = () => {
   const [currentFragrance, setCurrentFragrance] = useState(null)
