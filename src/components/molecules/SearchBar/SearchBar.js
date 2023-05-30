@@ -54,7 +54,6 @@ const SearchBar = () => {
         />
         <SearchResult isVisible={isOpen} {...getMenuProps()}>
           {(isOpen &&
-            items.length > 1 &&
             items.map(({ name }, index) => (
               <SearchResultsItem
                 isHighlighted={highlightedIndex === index}

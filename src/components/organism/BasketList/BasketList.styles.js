@@ -32,6 +32,10 @@ export const ButtonsWrapper = styled.div`
   flex-direction: column;
   margin: 15px 0;
   gap: 15px;
+
+  a {
+    color: inherit;
+  }
 `
 
 export const TotalPrice = styled.div`

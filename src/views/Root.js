@@ -8,6 +8,8 @@ import Header from 'components/molecules/Header/Header'
 import SearchBar from 'components/molecules/SearchBar/SearchBar'
 import BasketList from 'components/organism/BasketList/BasketList'
 import FragranceList from 'components/organism/FragranceList/FragranceList'
+import Order from 'components/pages/Order/Order'
+import Profile from 'components/pages/Profile/Profile'
 import { ThemeProvider } from 'styled-components'
 
 const Root = () => {
@@ -20,6 +22,8 @@ const Root = () => {
         {isShowingSearchBar ? <SearchBar /> : <Header>Your Fragnaces</Header>}
         <Routes>
           <Route path="/basket" element={<BasketList />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/order" element={<Order />} />
           <Route path="/" element={<FragranceList />} />
         </Routes>
         <Footer />
