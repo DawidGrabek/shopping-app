@@ -1,13 +1,15 @@
-import { Input } from 'components/atoms/Input/Input.styles'
 import React, { useState } from 'react'
-import { ReactComponent as SearchIcon } from 'assets/icons/search-icon.svg'
-import { SearchResult, SearchResultsItem, SearchWrapper, Wrapper } from './SearchBar.styles'
-import { useCombobox } from 'downshift'
-import data from 'data'
-import useModal from 'hooks/useModal'
-import FragranceItem from '../FragranceItem/FragranceItem'
-import { add } from 'features/basketSlice'
 import { useDispatch } from 'react-redux'
+
+import { ReactComponent as SearchIcon } from 'assets/icons/search-icon.svg'
+import { Input } from 'components/atoms/Input/Input.styles'
+import data from 'data'
+import { useCombobox } from 'downshift'
+import { add } from 'features/basketSlice'
+import useModal from 'hooks/useModal'
+
+import FragranceItem from '../FragranceItem/FragranceItem'
+import { SearchResult, SearchResultsItem, SearchWrapper, Wrapper } from './SearchBar.styles'
 
 const getFragrancesFilter = (inputValue) => {
   const lowerCasedInputValue = inputValue.toLowerCase()

@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { add, edit } from 'features/basketSlice'
-import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
-import { ButtonsWrapper, NewFragranceList, TotalPrice, Wrapper } from './BasketList.styles'
-import Button from 'components/atoms/Button/Button'
 import { Link } from 'react-router-dom'
+
+import Button from 'components/atoms/Button/Button'
+import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
+import { add, edit } from 'features/basketSlice'
+
+import { ButtonsWrapper, NewFragranceList, TotalPrice, Wrapper } from './BasketList.styles'
 
 const BasketList = () => {
   const dispatch = useDispatch()
