@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import Modal from 'components/organism/Modal/Modal'
 
 const useModal = (initialValue = false) => {
