@@ -12,22 +12,39 @@ const FragranceList = () => {
   const dispatch = useDispatch()
   const addToBasket = (fragrance) => dispatch(add(fragrance))
 
-  const handleOpenFragranceDetails = (name) => {
-    setCurrentFragrance(name)
+  const handleOpenFragranceDetails = (fragrance) => {
+    setCurrentFragrance(fragrance)
     handleOpenModal()
+  }
+
+  const handleClick = (fragrance) => {
+    setCurrentFragrance(fragrance)
   }
 
   return (
     <Wrapper>
-      {data.map((props) => (
+      {data.map((item) => (
         <FragranceItem
           addToBasket={addToBasket}
-          key={props.name}
-          {...props}
+          key={item.name}
+          {...item}
           handleOpenFragranceDetails={handleOpenFragranceDetails}
+          onClick={handleClick}
+          fragrance={item}
         />
       ))}
-      {isOpen ? <Modal handleClose={handleCloseModal}>{currentFragrance}</Modal> : null}
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal}>
+          <FragranceItem
+            isInModal
+            addToBasket={addToBasket}
+            name={currentFragrance.name}
+            capacity={currentFragrance.capacity}
+            price={currentFragrance.price}
+            src={currentFragrance.src}
+          />
+        </Modal>
+      ) : null}
     </Wrapper>
   )
 }

@@ -18,6 +18,8 @@ const FragranceItem = ({
   height,
   isBasketList,
   handleOpenFragranceDetails,
+  fragrance,
+  isInModal = false,
 }) => {
   const [listAmount, setListAmount] = useState(1)
   const [editableAmount, setEditableAmount] = useState(amount)
@@ -42,15 +44,13 @@ const FragranceItem = ({
   }
 
   return (
-    <Wrapper height={height} isBasketList={isBasketList}>
+    <Wrapper height={height} isBasketList={isBasketList} isInModal={isInModal}>
       <FragranceImage
         src={src}
         alt={`${name} fragrance`}
-        onClick={() => handleOpenFragranceDetails(name)}
+        onClick={() => handleOpenFragranceDetails(fragrance)}
       />
-      <FragranceName
-        onClick={() => handleOpenFragranceDetails(name)}
-      >{`${name} ${capacity}ml, ${price}zł`}</FragranceName>
+      <FragranceName>{`${name} ${capacity}ml, ${price}zł`}</FragranceName>
       <ButtonAndSelectWrapper as="form" onSubmit={(e) => handleSubmit(e)}>
         {isBasketList ? (
           <AmountSelect value={editableAmount} onChange={(e) => handleBasketInput(e)}>

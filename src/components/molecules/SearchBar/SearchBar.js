@@ -4,6 +4,10 @@ import { ReactComponent as SearchIcon } from 'assets/icons/search-icon.svg'
 import { SearchResult, SearchResultsItem, SearchWrapper, Wrapper } from './SearchBar.styles'
 import { useCombobox } from 'downshift'
 import data from 'data'
+import useModal from 'hooks/useModal'
+import FragranceItem from '../FragranceItem/FragranceItem'
+import { add } from 'features/basketSlice'
+import { useDispatch } from 'react-redux'
 
 const getFragrancesFilter = (inputValue) => {
   const lowerCasedInputValue = inputValue.toLowerCase()
@@ -14,7 +18,11 @@ const getFragrancesFilter = (inputValue) => {
 }
 
 const SearchBar = () => {
+  const { Modal, isOpen: modalIsOpen, handleCloseModal, handleOpenModal } = useModal()
+  const dispatch = useDispatch()
+  const addToBasket = (fragrance) => dispatch(add(fragrance))
   const [items, setItems] = useState(data)
+  const [selectedItem, setSelectedItem] = useState(null)
   const { isOpen, getLabelProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } =
     useCombobox({
       onInputValueChange({ inputValue }) {
@@ -24,26 +32,53 @@ const SearchBar = () => {
       itemToString(item) {
         return item ? item.name : ''
       },
+      onSelectedItemChange({ selectedItem }) {
+        console.log(selectedItem)
+        handleOpenModal()
+        setSelectedItem(selectedItem)
+      },
     })
 
   return (
     <Wrapper>
       <SearchWrapper>
         <SearchIcon as="label" {...getLabelProps()} />
-        <Input {...getInputProps()} type="text" name="Search" id="Search" placeholder="Search" />
+        <Input
+          {...getInputProps()}
+          type="text"
+          name="Search"
+          id="Search"
+          placeholder="Search"
+          autoFocus
+        />
         <SearchResult isVisible={isOpen} {...getMenuProps()}>
           {(isOpen &&
             items.length > 1 &&
             items.map(({ name }, index) => (
               <SearchResultsItem
                 isHighlighted={highlightedIndex === index}
-                {...getItemProps({ item: 'Mordo', index })}
+                {...getItemProps({
+                  item: 'Mordo',
+                  index,
+                })}
                 key={name}
               >
                 {name}
               </SearchResultsItem>
             ))) || <SearchResultsItem>There are nothing with this name</SearchResultsItem>}
         </SearchResult>
+        {modalIsOpen && selectedItem ? (
+          <Modal handleClose={handleCloseModal}>
+            <FragranceItem
+              isInModal
+              addToBasket={addToBasket}
+              name={selectedItem.name}
+              capacity={selectedItem.capacity}
+              price={selectedItem.price}
+              src={selectedItem.src}
+            />
+          </Modal>
+        ) : null}
       </SearchWrapper>
     </Wrapper>
   )

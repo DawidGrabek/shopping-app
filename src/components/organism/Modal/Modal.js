@@ -1,7 +1,7 @@
 import Button from 'components/atoms/Button/Button'
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { ModalWrapper } from './Modal.styles'
+import { ModalBackground, ModalWrapper } from './Modal.styles'
 
 const modalContainer = document.getElementById('modal-container')
 
@@ -16,10 +16,13 @@ const Modal = ({ handleClose, children }) => {
   }, [modalNode])
 
   return ReactDOM.createPortal(
-    <ModalWrapper>
-      {children}
-      <Button onClick={handleClose}>Close</Button>
-    </ModalWrapper>,
+    <>
+      <ModalBackground onClick={handleClose} />
+      <ModalWrapper>
+        {children}
+        <Button onClick={handleClose}>Close</Button>
+      </ModalWrapper>
+    </>,
     modalNode
   )
 }
