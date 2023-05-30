@@ -1,3 +1,4 @@
+import FragranceImage from 'components/atoms/FragranceImage/FragranceImage'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -5,8 +6,14 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: ${({ isInModal }) => isInModal && 'center'};
+
   text-align: center;
   margin: ${({ isBasketList }) => isBasketList && '0 15px'};
+
+  ${FragranceImage} {
+    pointer-events: ${({ isInModal }) => isInModal && 'none'};
+  }
 `
 
 export const AmountSelect = styled.select`
