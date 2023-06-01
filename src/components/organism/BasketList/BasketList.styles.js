@@ -20,6 +20,7 @@ export const NewFragranceList = styled(FragranceListWrapper)`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  
 
   ${FragranceItemWrapper} {
     flex-direction: row;

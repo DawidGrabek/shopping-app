@@ -6,6 +6,7 @@ import { Input } from 'components/atoms/Input/Input.styles'
 import data from 'data'
 import { useCombobox } from 'downshift'
 import { add } from 'features/basketSlice'
+import { toggleSearching } from 'features/searchBarSlice'
 import useModal from 'hooks/useModal'
 
 import FragranceItem from '../FragranceItem/FragranceItem'
@@ -40,10 +41,12 @@ const SearchBar = () => {
       },
     })
 
+  const handleCloseSearchBar = () => dispatch(toggleSearching())
+
   return (
     <Wrapper>
       <SearchWrapper>
-        <SearchIcon as="label" {...getLabelProps()} />
+        <SearchIcon as="label" {...getLabelProps()} onClick={handleCloseSearchBar} />
         <Input
           {...getInputProps()}
           type="text"

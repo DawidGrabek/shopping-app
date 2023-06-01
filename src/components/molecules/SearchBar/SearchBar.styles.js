@@ -15,12 +15,14 @@ export const SearchWrapper = styled.div`
   flex-direction: row;
   align-items: center;
 
+  margin: 0 auto;
   ${Input} {
     margin-left: 10px;
   }
 
   svg {
     width: 60px;
+    cursor: pointer;
   }
 `
 
