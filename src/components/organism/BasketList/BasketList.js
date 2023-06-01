@@ -15,36 +15,37 @@ const BasketList = () => {
   const totalPrice = basket.reduce((acc, { price, amount }) => (acc += price * amount), 0)
 
   return (
-    <>
-      <Wrapper>
-        <NewFragranceList>
-          {basket.map((props) => (
-            <FragranceItem
-              addToBasket={addToBasket}
-              editAmount={editAmount}
-              key={props.name}
-              {...props}
-              height="50%"
-              isBasketList
-            />
-          ))}
+    <Wrapper>
+      <NewFragranceList>
+        {basket.map((props) => (
+          <FragranceItem
+            addToBasket={addToBasket}
+            editAmount={editAmount}
+            key={props.name}
+            {...props}
+            height="50%"
+            isBasketList
+            isInModal
+          />
+        ))}
 
-          <TotalPrice>
-            <span>
-              Total Price: <b>{totalPrice.toFixed(2)}zł</b>
-            </span>
-          </TotalPrice>
-          <ButtonsWrapper>
-            <Link to="/">
-              <Button isNegative isBig>
-                Close
-              </Button>
-            </Link>
+        <TotalPrice>
+          <span>
+            Total Price: <b>{totalPrice.toFixed(2)}zł</b>
+          </span>
+        </TotalPrice>
+        <ButtonsWrapper>
+          <Link to="/">
+            <Button isNegative isBig>
+              Close
+            </Button>
+          </Link>
+          <Link to="/order">
             <Button isBig>Proceed</Button>
-          </ButtonsWrapper>
-        </NewFragranceList>
-      </Wrapper>
-    </>
+          </Link>
+        </ButtonsWrapper>
+      </NewFragranceList>
+    </Wrapper>
   )
 }
 

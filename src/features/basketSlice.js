@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 
 const initialState = { basket: [] }
 
@@ -7,7 +7,16 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      state.basket.push(action.payload)
+      const newProduct = action.payload
+      const existingProduct = state.basket.find((product) => product.name === newProduct.name)
+
+      if (existingProduct) {
+        // update amount
+        existingProduct.amount += newProduct.amount
+      } else {
+        // add new fragrance
+        state.basket.push(newProduct)
+      }
     },
     edit: (state, action) => {
       state.basket = state.basket.map((fragrance) =>

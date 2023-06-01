@@ -32,10 +32,15 @@ export const ButtonsWrapper = styled.div`
   flex-direction: column;
   margin: 15px 0;
   gap: 15px;
+
+  a {
+    color: inherit;
+  }
 `
 
 export const TotalPrice = styled.div`
   width: 100%;
+  max-width: 400px;
   background-color: ${({ theme }) => theme.colors.grey};
   padding: 20px 0;
   text-align: center;

@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 export const ModalWrapper = styled.div`
   position: fixed;
-  top: calc(50%);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90vw;
   max-width: 500px;
-  height: 75vh;
+  height: fit-content;
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
   flex-direction: column;
@@ -19,7 +19,10 @@ export const ModalWrapper = styled.div`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
   & > button {
-    max-width: 200px;
+    margin-top: 20px;
+    max-width: fit-content;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 `
 
