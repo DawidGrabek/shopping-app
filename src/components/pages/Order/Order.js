@@ -1,10 +1,13 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import orderSchema from 'assets/schemas/orderSchema'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
+import { add } from 'features/orderSlice'
 
 import { Wrapper } from './Order.styles'
 
@@ -14,9 +17,12 @@ const Order = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(orderSchema) })
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const onSubmit = (data) => {
-    console.log(data)
+    dispatch(add(data))
+    navigate('/order/final')
   }
 
   return (
@@ -28,6 +34,7 @@ const Order = () => {
         placeholder={'City'}
         {...register('city')}
         error={errors?.city?.message}
+        required
       />
       <FormField
         id="postalCode"
@@ -36,6 +43,7 @@ const Order = () => {
         placeholder={'11-111'}
         {...register('postalCode')}
         error={errors?.postalCode?.message}
+        required
       />
       <FormField
         id="street"
@@ -44,6 +52,7 @@ const Order = () => {
         placeholder={'Lipowa'}
         {...register('street')}
         error={errors?.street?.message}
+        required
       />
       <FormField
         id="homeNumber"
@@ -52,6 +61,7 @@ const Order = () => {
         placeholder={'5'}
         {...register('homeNumber')}
         error={errors?.homeNumber?.message}
+        required
       />
       <FormField
         id="mobileNumber"
@@ -60,10 +70,9 @@ const Order = () => {
         placeholder={'123456789'}
         {...register('mobileNumber')}
         error={errors?.mobileNumber?.message}
+        required
       />
-      <Button type="submit" isBig>
-        Next
-      </Button>
+      <Button type="submit">Next</Button>
     </Wrapper>
   )
 }

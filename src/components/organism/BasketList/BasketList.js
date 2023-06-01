@@ -40,11 +40,9 @@ const BasketList = () => {
               Close
             </Button>
           </Link>
-          <Button isBig>
-            <Link as={Link} to="/order">
-              Proceed{' '}
-            </Link>
-          </Button>
+          <Link to="/order">
+            <Button isBig>Proceed</Button>
+          </Link>
         </ButtonsWrapper>
       </NewFragranceList>
     </Wrapper>

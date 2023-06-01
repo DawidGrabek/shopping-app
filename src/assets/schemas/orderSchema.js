@@ -18,7 +18,8 @@ const orderSchema = yup.object().shape({
         return mobileNumberRegex.test(value.toString())
       }
       return false
-    }),
+    })
+    .required('Mobile number number is required'),
 })
 
 export default orderSchema
