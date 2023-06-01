@@ -22,7 +22,9 @@ const Modal = ({ handleClose, children }) => {
       <ModalBackground onClick={handleClose} />
       <ModalWrapper>
         {children}
-        <Button onClick={handleClose}>Close</Button>
+        <Button isNegative isBig onClick={handleClose}>
+          Close
+        </Button>
       </ModalWrapper>
     </>,
     modalNode

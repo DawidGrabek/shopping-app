@@ -20,7 +20,9 @@ export const ModalWrapper = styled.div`
 
   & > button {
     margin-top: 20px;
-    max-width: 200px;
+    max-width: fit-content;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 `
 

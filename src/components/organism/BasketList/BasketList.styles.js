@@ -20,7 +20,6 @@ export const NewFragranceList = styled(FragranceListWrapper)`
   flex-direction: column;
   width: 100%;
   align-items: center;
-  
 
   ${FragranceItemWrapper} {
     flex-direction: row;
@@ -41,6 +40,7 @@ export const ButtonsWrapper = styled.div`
 
 export const TotalPrice = styled.div`
   width: 100%;
+  max-width: 400px;
   background-color: ${({ theme }) => theme.colors.grey};
   padding: 20px 0;
   text-align: center;
