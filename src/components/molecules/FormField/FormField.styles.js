@@ -4,12 +4,11 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   position: relative;
-  width: 90%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
-  margin: 20px 0 0px 0;
+  margin: 20px auto 0px auto;
 
   ${Label} {
     margin: 5px 0;
@@ -21,6 +20,7 @@ export const Wrapper = styled.div`
     padding-top: 10px;
     padding-bottom: 10px;
     color: ${({ theme }) => theme.colors.black};
+    max-width: 400px;
     background-color: transparent;
     border: 1px solid ${({ theme }) => theme.colors.darkGrey};
     border-radius: 10px;

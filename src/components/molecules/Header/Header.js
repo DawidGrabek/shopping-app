@@ -4,13 +4,15 @@ import { StyledHeader } from 'components/molecules/Header/Header.styles'
 
 import NavigationIcons from '../../organism/NavigationIcons/NavigationIcons'
 
-const Header = ({ children }) => {
+const Header = ({ children, isUnauthorizedApp }) => {
   return (
-    <StyledHeader>
+    <StyledHeader isUnauthorizedApp>
       {children}
-      <div>
-        <NavigationIcons />
-      </div>
+      {isUnauthorizedApp ? null : (
+        <div>
+          <NavigationIcons />
+        </div>
+      )}
     </StyledHeader>
   )
 }
