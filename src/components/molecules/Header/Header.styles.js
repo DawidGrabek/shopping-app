@@ -15,7 +15,7 @@ export const StyledHeader = styled.header`
   }
 
   @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
-    justify-content: space-between;
+    justify-content: ${({ isUnauthorizedApp }) => (isUnauthorizedApp ? '' : 'space-between')};
     padding: 0 2rem;
 
     & > div {

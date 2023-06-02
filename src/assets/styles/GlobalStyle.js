@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
   a, button {
     font-family: 'Quicksand', sans-serif;
     text-decoration: none;
+    color: inherit;
   }
 
   #root{
