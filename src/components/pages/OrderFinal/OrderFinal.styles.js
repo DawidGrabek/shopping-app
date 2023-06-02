@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.form`
+export const Wrapper = styled.div`
   position: relative;
-  width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
   margin: 20px auto 120px auto;
 
@@ -26,7 +25,7 @@ export const Wrapper = styled.form`
 `
 
 export const ProductsWrapper = styled.div`
-  margin: 25px auto 0px 15px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
 
@@ -39,15 +38,10 @@ export const ProductsWrapper = styled.div`
     font-weight: 700;
     padding: 5px 0;
   }
-
-  @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
-    margin-left: 3vw;
-  }
 `
 
 export const TotalPrice = styled.div`
-  width: 100%;
-  /* background-color: ${({ theme }) => theme.colors.grey}; */
+  margin: 0 auto;
   padding: 20px 0;
   text-align: start;
 

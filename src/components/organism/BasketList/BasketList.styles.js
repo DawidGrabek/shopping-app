@@ -25,6 +25,10 @@ export const NewFragranceList = styled(FragranceListWrapper)`
     flex-direction: row;
     justify-content: center;
   }
+
+  & > h1 {
+    margin: 20px;
+  }
 `
 
 export const ButtonsWrapper = styled.div`

@@ -6,7 +6,7 @@ import NavigationIcons from '../../organism/NavigationIcons/NavigationIcons'
 
 const Header = ({ children, isUnauthorizedApp }) => {
   return (
-    <StyledHeader isUnauthorizedApp>
+    <StyledHeader isUnauthorizedApp={isUnauthorizedApp}>
       {children}
       {isUnauthorizedApp ? null : (
         <div>
