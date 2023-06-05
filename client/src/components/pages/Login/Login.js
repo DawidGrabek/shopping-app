@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import loginSchema from 'assets/schemas/loginSchema'
@@ -12,6 +12,7 @@ import { Wrapper } from './Login.styles'
 
 const Login = () => {
   const { error, handleSubmit } = useAuth()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit: handleFormSubmit,

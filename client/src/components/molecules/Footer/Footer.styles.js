@@ -13,12 +13,12 @@ export const StyledFooter = styled.footer`
   justify-content: space-around;
   padding-top: 8px;
 
-  @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
+  /* @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
     display: none;
 
     & > div,
     & > svg {
       display: none;
     }
-  }
+  } */
 `

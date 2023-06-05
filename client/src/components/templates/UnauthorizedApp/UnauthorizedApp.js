@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux'
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 
 import { GlobalStyle } from 'assets/styles/GlobalStyle'

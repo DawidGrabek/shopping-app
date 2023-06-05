@@ -41,7 +41,8 @@ const SearchBar = () => {
       },
     })
 
-  const handleCloseSearchBar = () => dispatch(toggleSearching())
+  // const handleCloseSearchBar = () => dispatch(toggleSearching())
+  const handleCloseSearchBar = () => localStorage.setItem('isShowingSearchBar', false)
 
   return (
     <Wrapper>

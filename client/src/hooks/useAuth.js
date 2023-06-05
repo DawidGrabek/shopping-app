@@ -34,7 +34,7 @@ const useAuth = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     setUser(null)
-    window.location = '/'
+    window.location = '/login'
   }
 
   return { error, handleSubmit, isLogged, logOut, user, setUser }
