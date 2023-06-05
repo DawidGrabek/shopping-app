@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
 import { theme } from 'assets/styles/theme'
@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components'
 
 const UnauthorizedApp = () => {
   return (
-    <Router>
+    <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Header isUnauthorizedApp>Your Fragnaces</Header>
@@ -18,7 +18,7 @@ const UnauthorizedApp = () => {
           <Route path="*" element={<Login />} />
         </Routes>
       </ThemeProvider>
-    </Router>
+    </>
   )
 }
 

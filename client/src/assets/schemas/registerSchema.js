@@ -13,7 +13,7 @@ const registerSchema = yup.object().shape({
   password: yup
     .string()
     .required('Password is required')
-    .min(6, 'Password must be at least 6 characters long'),
+    .min(8, 'Password must be at least 8 characters long'),
   repeatPassword: yup
     .string()
     .required('Repeat password is required')

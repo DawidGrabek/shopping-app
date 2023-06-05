@@ -6,12 +6,13 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import registerSchema from 'assets/schemas/registerSchema'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
-import useSignup from 'hooks/useSignUp'
+import { useAuth } from 'hooks/useApi'
 
 import { Wrapper } from './Register.styles'
 
 const Register = () => {
-  const { error, handleSubmit } = useSignup()
+  const { error, signUp } = useAuth()
+
   const {
     register,
     handleSubmit: handleFormSubmit,
@@ -19,9 +20,8 @@ const Register = () => {
   } = useForm({ resolver: yupResolver(registerSchema) })
 
   const onSubmit = (data) => {
-    console.log(data, errors)
     delete data['repeatPassword']
-    handleSubmit(data)
+    signUp(data)
   }
 
   return (

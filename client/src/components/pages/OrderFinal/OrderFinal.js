@@ -2,41 +2,25 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import axios from 'axios'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
 import { clear } from 'features/basketSlice'
-import useAuth from 'hooks/useAuth'
+import { useAuth } from 'hooks/useApi'
 
 import { ProductsWrapper, TotalPrice, Wrapper } from './OrderFinal.styles'
 
 const OrderFinal = () => {
-  const { user, setUser } = useAuth()
+  const { user, addOrder } = useAuth()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const {
     order: { order },
     basket: { basket },
   } = useSelector((state) => state)
-  console.log(basket)
   const totalPrice = basket.reduce((acc, { price, amount }) => (acc += price * amount), 0)
 
   const handleClick = () => {
-    const addOrderToUser = async () => {
-      try {
-        const { name, price, capacity, amount } = basket
-        await axios.post('http://localhost:8080/api/users/addOrder', {
-          email: user.email,
-          orders: basket,
-        })
-
-        console.log('Basket added to user successfully')
-      } catch (error) {
-        console.error('Error adding basket to user', error)
-      }
-    }
-
-    addOrderToUser()
+    addOrder(basket)
     dispatch(clear())
     navigate('/')
   }

@@ -1,12 +1,12 @@
 import React from 'react'
 
 import Button from 'components/atoms/Button/Button'
-import useAuth from 'hooks/useAuth'
+import { useAuth } from 'hooks/useApi'
 
 import { Field, Wrapper } from './Profile.styles'
 
 const Profile = () => {
-  const { logOut, user } = useAuth()
+  const { signOut, user } = useAuth()
 
   return (
     <Wrapper>
@@ -20,7 +20,12 @@ const Profile = () => {
       <Field>
         Email: <span>{user?.email}</span>
       </Field>
-      <Button isBig onClick={logOut}>
+      <ul>
+        {user.orders.map((order) => (
+          <li>{order.name}</li>
+        ))}
+      </ul>
+      <Button isBig onClick={signOut}>
         Log out
       </Button>
     </Wrapper>

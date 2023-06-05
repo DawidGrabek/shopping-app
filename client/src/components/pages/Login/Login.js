@@ -1,18 +1,17 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import loginSchema from 'assets/schemas/loginSchema'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
-import useAuth from 'hooks/useAuth'
+import { useAuth } from 'hooks/useApi'
 
 import { Wrapper } from './Login.styles'
 
 const Login = () => {
-  const { error, handleSubmit } = useAuth()
-  const navigate = useNavigate()
+  const { signIn, error } = useAuth()
   const {
     register,
     handleSubmit: handleFormSubmit,
@@ -20,7 +19,7 @@ const Login = () => {
   } = useForm({ resolver: yupResolver(loginSchema) })
 
   const onSubmit = (data) => {
-    handleSubmit(data)
+    signIn(data)
   }
 
   return (

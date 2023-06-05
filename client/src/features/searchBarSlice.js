@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  isShowingSearchBar: localStorage.getItem('isShowingSearchBar') ? true : false,
+  isShowingSearchBar: false,
 }
 
 export const searchBarSlice = createSlice({
@@ -9,9 +9,6 @@ export const searchBarSlice = createSlice({
   initialState,
   reducers: {
     toggleSearching: (state) => {
-      localStorage.getItem('isShowingSearchBar')
-        ? localStorage.setItem('isShowingSearchBar', false)
-        : localStorage.setItem('isShowingSearchBar', true)
       state.isShowingSearchBar = !state.isShowingSearchBar
     },
   },
