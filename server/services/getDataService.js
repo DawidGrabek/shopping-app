@@ -1,22 +1,21 @@
 const { User } = require('../models/user')
-const Joi = require('joi')
 
-const validate = (data) => {
-  const schema = Joi.object({
-    email: Joi.string().email().required().label('email'),
-  })
-  return schema.validate(data)
+async function getUserData(userId) {
+  try {
+    const user = await User.findOne({ _id: userId })
+    return user
+  } catch (error) {
+    console.log('Error fetching user data: ', error)
+    throw error
+  }
 }
 
 module.exports = async (req, res) => {
   try {
-    const { error } = validate(req.query)
-    if (error)
-      return res.status(400).send({ message: error.details[0].message })
-    const user = await User.findOne({ email: req.query.email })
-    if (!user) return res.status(404).send({ message: 'User not found' })
-    res.status(200).send({ data: user, message: 'User found' })
+    const userData = await getUserData(req.decoded)
+    res.json(userData)
   } catch (error) {
-    res.status(500).send({ message: 'Internal Server Error' })
+    console.log('Error fetching user data: ', error)
+    return res.status(500).json({ message: 'Error fetching user data' })
   }
 }

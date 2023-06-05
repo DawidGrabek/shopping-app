@@ -5,6 +5,7 @@ const cors = require('cors')
 const userRoutes = require('./routes/users')
 const authRoutes = require('./routes/auth')
 const addOrder = require('./routes/addOrder')
+const dataRouters = require('./routes/data')
 
 //middleware
 app.use(cors())
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use('/api/users', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users/addOrder', addOrder)
+app.use('/api/data', dataRouters)
 
 const port = process.env.PORT || 8080
 
