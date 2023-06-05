@@ -46,14 +46,14 @@ const BasketList = () => {
           </span>
         </TotalPrice>
         <ButtonsWrapper>
+          <Button isBig onClick={handleGoProceed}>
+            Proceed
+          </Button>
           <Link to="/">
             <Button isNegative isBig>
               Close
             </Button>
           </Link>
-          <Button isBig onClick={handleGoProceed}>
-            Proceed
-          </Button>
         </ButtonsWrapper>
         {error && <h2>{error}</h2>}
       </NewFragranceList>

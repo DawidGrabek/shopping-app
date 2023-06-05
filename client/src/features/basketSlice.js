@@ -26,9 +26,12 @@ export const basketSlice = createSlice({
     deleteItem: (state) => {
       state.basket = state.basket.filter((fragrance) => fragrance.amount !== 0)
     },
+    clear: (state) => {
+      state.basket = []
+    },
   },
 })
 
-export const { add, edit, deleteItem } = basketSlice.actions
+export const { add, edit, deleteItem, clear } = basketSlice.actions
 
 export default basketSlice.reducer

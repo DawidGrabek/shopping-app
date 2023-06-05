@@ -19,7 +19,7 @@ import { toggleSearching } from 'features/searchBarSlice'
 const NavigationIcons = (props) => {
   const { basket } = useSelector((state) => state.basket)
   const dispatch = useDispatch()
-  const amount = basket.length
+  const amount = basket.length || 0
   const handleClick = () => dispatch(toggleSearching())
 
   return (

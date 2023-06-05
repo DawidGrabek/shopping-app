@@ -5,34 +5,39 @@ import axios from 'axios'
 const useAuth = () => {
   const [error, setError] = useState('')
   const [isLogged, setIsLogged] = useState(false)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     localStorage.getItem('token') ? setIsLogged(true) : setIsLogged(false)
+    setUser(JSON.parse(localStorage.getItem('user')))
   }, [])
 
   const handleSubmit = async (formData) => {
     try {
       const url = 'http://localhost:8080/api/auth'
       const { data: res } = await axios.post(url, formData)
-      console.log(formData)
+      const jsonUser = JSON.stringify(res.user)
+      setUser(res.user)
+      localStorage.setItem('user', jsonUser)
       localStorage.setItem('token', res.data)
       window.location = '/'
-      setIsLogged(true)
     } catch (error) {
       if (error.response && error.response.status >= 400 && error.response.status <= 500) {
         setError(error.response.data.message)
-        setIsLogged(false)
+        // setIsLogged(false)
+        setUser(null)
       }
     }
   }
 
   const logOut = () => {
     localStorage.removeItem('token')
-    setIsLogged(false)
+    localStorage.removeItem('user')
+    setUser(null)
     window.location = '/'
   }
 
-  return { error, handleSubmit, isLogged, logOut }
+  return { error, handleSubmit, isLogged, logOut, user, setUser }
 }
 
 export default useAuth

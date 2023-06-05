@@ -3,9 +3,9 @@ import UnauthorizedApp from 'components/templates/UnauthorizedApp/UnauthorizedAp
 import useAuth from 'hooks/useAuth'
 
 const Root = () => {
-  const { isLogged } = useAuth()
+  const { user } = useAuth()
 
-  return isLogged ? <AuthorizedApp /> : <UnauthorizedApp />
+  return user ? <AuthorizedApp /> : <UnauthorizedApp />
 }
 
 export default Root

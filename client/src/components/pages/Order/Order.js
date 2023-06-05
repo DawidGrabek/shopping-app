@@ -76,11 +76,11 @@ const Order = () => {
         error={errors?.mobileNumber?.message}
         required
       />
-      <Button isBig isNegative onClick={handleGoBack}>
-        Back
-      </Button>
       <Button isBig type="submit">
         Next
+      </Button>
+      <Button isBig isNegative onClick={handleGoBack}>
+        Back
       </Button>
     </Wrapper>
   )
