@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import Footer from 'components/molecules/Footer/Footer'
 import Header from 'components/molecules/Header/Header'
@@ -23,6 +23,7 @@ const AuthorizedApp = () => {
         <Route path="/order/final" element={<OrderFinal />} />
         <Route path="/order" element={<Order />} />
         <Route path="/" element={<FragranceList />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
     </>

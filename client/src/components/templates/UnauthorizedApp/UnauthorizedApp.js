@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
 import { theme } from 'assets/styles/theme'
@@ -15,7 +15,8 @@ const UnauthorizedApp = () => {
         <Header isUnauthorizedApp>Your Fragnaces</Header>
         <Routes>
           <Route path="/register" element={<Register />} />
-          <Route path="*" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </ThemeProvider>
     </>

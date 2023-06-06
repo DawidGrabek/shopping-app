@@ -12,17 +12,19 @@ const Profile = () => {
     <Wrapper>
       <Field>
         <label>First name:</label>
-        <span>{user?.firstName}</span>
+        <span>{user.firstName}</span>
       </Field>
       <Field>
-        Last name: <span>{user?.lastName}</span>
+        Last name: <span>{user.lastName}</span>
       </Field>
       <Field>
-        Email: <span>{user?.email}</span>
+        Email: <span>{user.email}</span>
       </Field>
       <ul>
         {user.orders.map((order) => (
-          <li>{order.name}</li>
+          <li key={order._id}>
+            {order.amount} x {order.name} - {order.price}zł
+          </li>
         ))}
       </ul>
       <Button isBig onClick={signOut}>

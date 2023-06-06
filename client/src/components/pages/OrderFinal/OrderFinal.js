@@ -32,7 +32,7 @@ const OrderFinal = () => {
         id="firstName"
         labelText="First name"
         type={'text'}
-        value={user?.firstName || ''}
+        value={user.firstName || ''}
         readOnly
         disabled
       />
@@ -40,7 +40,7 @@ const OrderFinal = () => {
         id="lastName"
         labelText="Last name"
         type={'text'}
-        value={user?.lastName || ''}
+        value={user.lastName || ''}
         readOnly
         disabled
       />
@@ -48,7 +48,7 @@ const OrderFinal = () => {
         id="email"
         labelText="Email"
         type={'email'}
-        value={user?.email || ''}
+        value={user.email || ''}
         readOnly
         disabled
       />
