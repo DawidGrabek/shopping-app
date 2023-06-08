@@ -1,6 +1,15 @@
 {
-  "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:prettier/recommended",
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": [
       "warn",
@@ -11,12 +20,23 @@
         "tabWidth": 2,
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "react/prop-types": "off",
+    "@typescript-eslint/no-empty-function": "off"
   },
   "env": {
     "browser": true,
     "node": true,
     "es6": true
   },
-  "parser": "@babel/eslint-parser"
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-empty-function": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser"
 }
