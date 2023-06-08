@@ -1,10 +1,11 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import orderSchema from 'assets/schemas/orderSchema'
+import { OrderDetails } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
 import { add } from 'features/orderSlice'
@@ -16,12 +17,13 @@ const Order: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(orderSchema) })
+  } = useForm<OrderDetails>({ resolver: yupResolver(orderSchema) })
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // TODO: change any
-  const onSubmit = (data: any) => {
+  const onSubmit: SubmitHandler<OrderDetails> = (data) => {
+    console.log('data', data)
+
     dispatch(add(data))
     navigate('/order/final')
   }

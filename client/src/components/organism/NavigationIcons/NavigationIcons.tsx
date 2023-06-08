@@ -13,7 +13,7 @@ import { BasketWrapper, StyledCircle, StyledBasketIcon } from './NavigationIcons
 const NavigationIcons: React.FC = () => {
   const { basket } = useSelector((state: RootState) => state.basket)
   const dispatch = useDispatch()
-  const amount: number = basket.length || 0
+  const amount = basket.length || 0
   const handleClick = () => dispatch(toggleSearching())
 
   return (

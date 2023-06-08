@@ -8,7 +8,6 @@ import { Field, Wrapper } from './Profile.styles'
 
 const Profile: React.FC = () => {
   const { signOut, user } = useAuth()
-  console.log(user)
 
   const orderTotalPrice = (order: Order) => order.price * order.amount
 
@@ -16,18 +15,18 @@ const Profile: React.FC = () => {
     <Wrapper>
       <Field>
         <label>First name:</label>
-        <span>{user.firstName}</span>
+        <span>{user?.firstName}</span>
       </Field>
       <Field>
-        Last name: <span>{user.lastName}</span>
+        Last name: <span>{user?.lastName}</span>
       </Field>
       <Field>
-        Email: <span>{user.email}</span>
+        Email: <span>{user?.email}</span>
       </Field>
       <ul>
-        {user.orders.map((order: Order) => (
+        {user?.orders.map((order: Order) => (
           <li key={order._id}>
-            {order.amount} x {order.name} - {orderTotalPrice(order)}zł
+            {order.amount} x {order.fragranceName} - {orderTotalPrice(order)}zł
           </li>
         ))}
       </ul>

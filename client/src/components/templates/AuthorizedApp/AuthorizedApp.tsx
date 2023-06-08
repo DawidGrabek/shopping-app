@@ -5,14 +5,14 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { RootState } from 'app/store'
 import Footer from 'components/molecules/Footer/Footer'
 import Header from 'components/molecules/Header/Header'
-import SearchBar from 'components/molecules/SearchBar/SearchBar'
 import BasketList from 'components/organism/BasketList/BasketList'
 import FragranceList from 'components/organism/FragranceList/FragranceList'
+import SearchBar from 'components/organism/SearchBar/SearchBar'
 import Order from 'components/pages/Order/Order'
 import OrderFinal from 'components/pages/OrderFinal/OrderFinal'
 import Profile from 'components/pages/Profile/Profile'
 
-const AuthorizedApp = () => {
+const AuthorizedApp: React.FC = () => {
   const { isShowingSearchBar } = useSelector((state: RootState) => state.searchBar)
 
   return (

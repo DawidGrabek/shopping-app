@@ -1,13 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-
-export interface Fragrance {
-  fragranceName: string
-  amount: number
-  capacity: number
-  price: number
-  src: string
-  value?: any
-}
+import { Fragrance } from 'assets/types'
 
 interface BasketState {
   basket: Fragrance[]

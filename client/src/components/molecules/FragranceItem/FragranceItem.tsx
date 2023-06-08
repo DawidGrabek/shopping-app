@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from 'app/store'
+import { Fragrance } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import { FragranceImage } from 'components/atoms/FragranceImage/FragranceImage.styles'
 import { FragranceName } from 'components/atoms/FragranceName/FragranceName.styles'
-import { Fragrance, deleteItem } from 'features/basketSlice'
+import { deleteItem } from 'features/basketSlice'
 import PropTypes from 'prop-types'
 
 import { AmountSelect, ButtonAndSelectWrapper, Wrapper } from './FragranceItem.styles'

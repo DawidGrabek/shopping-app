@@ -1,40 +1,17 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Order } from 'assets/types'
+import { ApiContextType, Basket, LoginData, User } from 'assets/types'
 import AxiosApi from 'axios.config'
 
 interface Props {
   children: ReactNode
 }
 
-interface FormData {
-  email: string
-  password: string
-}
-
-// TODO: add basket interface
-interface ApiContextType {
-  user: User
-  signIn: (formData: FormData) => Promise<void>
-  signOut: () => void
-  signUp: (formData: FormData) => Promise<void>
-  error: string | null
-  addOrder: (basket: any) => Promise<void>
-}
-
-interface User {
-  _id: string
-  email: string
-  firstName: string
-  lastName: string
-  orders: Order[]
-}
-
 const ApiContext = React.createContext<ApiContextType | undefined>(undefined)
 
 export const ApiProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [error, setError] = useState<string>('')
   const navigate = useNavigate()
 
@@ -51,7 +28,7 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
       })()
   }, [])
 
-  const signIn = async (formData: FormData): Promise<void> => {
+  const signIn = async (formData: LoginData): Promise<void> => {
     try {
       const response = await AxiosApi.post('/api/auth', formData)
       setUser(response.data.user)
@@ -68,7 +45,7 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
     localStorage.removeItem('token')
   }
 
-  const signUp = async (formData: FormData): Promise<void> => {
+  const signUp = async (formData: LoginData): Promise<void> => {
     try {
       await AxiosApi.post('/api/users', formData)
       navigate('/login')
@@ -79,10 +56,12 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
     }
   }
 
-  const addOrder = async (basket: any): Promise<void> => {
+  const addOrder = async (basket: Basket): Promise<void> => {
+    console.log(basket)
+
     try {
       await AxiosApi.post('/api/users/addOrder', {
-        email: user.email,
+        email: user?.email,
         orders: basket,
       })
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import loginSchema from 'assets/schemas/loginSchema'
+import { LoginData } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
 import { useAuth } from 'hooks/useApi'
@@ -16,9 +17,9 @@ const Login: React.FC = () => {
     register,
     handleSubmit: handleFormSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(loginSchema) })
+  } = useForm<LoginData>({ resolver: yupResolver(loginSchema) })
 
-  const onSubmit = (data: any) => {
+  const onSubmit: SubmitHandler<LoginData> = (data) => {
     signIn(data)
   }
 

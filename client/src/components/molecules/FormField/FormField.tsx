@@ -1,29 +1,12 @@
 import React, { InputHTMLAttributes } from 'react'
 import { FieldError } from 'react-hook-form'
 
+import { ErrorObject } from 'assets/types'
 import { Input } from 'components/atoms/Input/Input.styles'
 import { Label } from 'components/atoms/Label/Label.styles'
 import PropTypes from 'prop-types'
 
 import { Wrapper } from './FormField.styles'
-
-interface ErrorObject {
-  email?: {
-    message: string
-  }
-  password?: {
-    message: string
-  }
-  firstName?: {
-    message: string
-  }
-  lastName?: {
-    message: string
-  }
-  repeatPassword?: {
-    message: string
-  }
-}
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   id: string
@@ -62,6 +45,8 @@ const FormField = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
     </Wrapper>
   )
 })
+
+FormField.displayName = 'FormField'
 
 FormField.propTypes = {
   id: PropTypes.string.isRequired,

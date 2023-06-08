@@ -5,13 +5,9 @@ import { Wrapper as FragranceListWrapper } from '../FragranceList/FragranceList.
 
 export const Wrapper = styled.div`
   width: 100%;
-  /* min-height: 300px; */
-  /* max-height: 30vh; */
   overflow-y: scroll;
-  /* top: 0; */
   display: flex;
   justify-content: center;
-  /* left: 0; */
   background-color: ${({ theme }) => theme.colors.white};
 `
 

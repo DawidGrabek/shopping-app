@@ -4,19 +4,12 @@ import { Link } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import registerSchema from 'assets/schemas/registerSchema'
+import { RegisterData } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
 import { useAuth } from 'hooks/useApi'
 
 import { Wrapper } from './Register.styles'
-
-interface FormData {
-  email: string
-  firstName: string
-  lastName: string
-  password: string
-  repeatPassword: string
-}
 
 const Register: React.FC = () => {
   const { error, signUp } = useAuth()
@@ -25,9 +18,9 @@ const Register: React.FC = () => {
     register,
     handleSubmit: handleFormSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: yupResolver(registerSchema) })
+  } = useForm<RegisterData>({ resolver: yupResolver(registerSchema) })
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit: SubmitHandler<RegisterData> = (data) => {
     const { repeatPassword, ...rest } = data
     signUp(rest)
   }

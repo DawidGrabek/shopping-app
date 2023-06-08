@@ -8,7 +8,7 @@ import Login from 'components/pages/Login/Login'
 import Register from 'components/pages/Register/Register'
 import { ThemeProvider } from 'styled-components'
 
-const UnauthorizedApp = () => {
+const UnauthorizedApp: React.FC = () => {
   return (
     <>
       <ThemeProvider theme={theme}>

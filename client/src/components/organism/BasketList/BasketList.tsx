@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { RootState } from 'app/store'
+import { Fragrance } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
-import { Fragrance, add, edit } from 'features/basketSlice'
+import { add, edit } from 'features/basketSlice'
 
 import { ButtonsWrapper, NewFragranceList, TotalPrice, Wrapper } from './BasketList.styles'
 
