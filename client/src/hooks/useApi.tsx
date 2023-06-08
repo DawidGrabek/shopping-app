@@ -57,8 +57,6 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
   }
 
   const addOrder = async (basket: Basket): Promise<void> => {
-    console.log(basket)
-
     try {
       await AxiosApi.post('/api/users/addOrder', {
         email: user?.email,

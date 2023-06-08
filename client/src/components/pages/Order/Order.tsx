@@ -22,8 +22,6 @@ const Order: React.FC = () => {
   const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<OrderDetails> = (data) => {
-    console.log('data', data)
-
     dispatch(add(data))
     navigate('/order/final')
   }
