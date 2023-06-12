@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   orders: [
     {
-      name: { type: String, required: true },
+      fragranceName: { type: String, required: true },
       price: { type: Number, required: true },
       capacity: { type: Number, required: true },
       amount: { type: Number, required: true },
