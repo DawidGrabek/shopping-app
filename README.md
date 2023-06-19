@@ -6,7 +6,7 @@ My Application is an application written in **React** using **TypeScript** on th
 
 ## Preview
 
-<video src="shopping-app.mp4" controls title="Title"></video>
+[<video src="shopping-app.mp4" controls title="Title"></video>](https://github.com/DawidGrabek/shopping-app/assets/78135332/8e7f9a5f-5e70-4ab3-8ef3-3a62a1dced5d)
 
 ## How to Run the Application
 
