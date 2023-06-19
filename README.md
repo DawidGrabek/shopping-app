@@ -4,6 +4,10 @@
 
 My Application is an application written in **React** using **TypeScript** on the client side and **Node.js** with **Express** on the server side. The application uses **MongoDB** as the database. In the future, **unit tests, integration tests, and end-to-end tests will be added** to the client side. The application will continue to be developed and expanded.
 
+## Preview
+
+<video src="shopping-app.mp4" controls title="Title"></video>
+
 ## How to Run the Application
 
 To run My Super React Application, follow the steps below:
