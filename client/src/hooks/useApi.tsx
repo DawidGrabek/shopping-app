@@ -2,6 +2,7 @@ import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { ApiContextType, Basket, LoginData, User } from 'assets/types'
+import { AxiosError } from 'axios'
 import AxiosApi from 'axios.config'
 
 interface Props {
@@ -33,8 +34,13 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
       const response = await AxiosApi.post('/api/auth', formData)
       setUser(response.data.user)
       localStorage.setItem('token', response.data.data)
-    } catch (error: any) {
-      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+    } catch (error: unknown) {
+      if (
+        error instanceof AxiosError &&
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
         setError(error.response.data.message)
       }
     }
@@ -49,8 +55,13 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
     try {
       await AxiosApi.post('/api/users', formData)
       navigate('/login')
-    } catch (error: any) {
-      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+    } catch (error: unknown) {
+      if (
+        error instanceof AxiosError &&
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
         setError(error.response.data.message)
       }
     }
@@ -66,8 +77,10 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
       // After adding new order you should get new data
       const response = await AxiosApi.get('/api/data')
       setUser(response.data)
-    } catch (error: any) {
-      console.error('Error adding basket to user', error)
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        console.error('Error adding basket to user', error)
+      }
     }
   }
 
