@@ -21,7 +21,12 @@ const Register: React.FC = () => {
   } = useForm<RegisterData>({ resolver: yupResolver(registerSchema) })
 
   const onSubmit: SubmitHandler<RegisterData> = (data) => {
-    const { repeatPassword, ...rest } = data
+    const rest = {
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      password: data.password,
+    }
     signUp(rest)
   }
 
