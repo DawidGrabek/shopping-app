@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
 import react from '@vitejs/plugin-react'
 // import path from 'node:path'
 import { defineConfig } from 'vite'
@@ -13,4 +15,10 @@ export default defineConfig({
   //   },
   // },
   plugins: [react(), viteTsconfigPaths(), eslint(), svgrPlugin()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    css: true,
+    setupFiles: './setupTests.ts',
+  },
 })
