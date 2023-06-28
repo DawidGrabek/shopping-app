@@ -72,3 +72,7 @@ export interface ErrorObject {
     message: string
   }
 }
+
+export interface BasketState {
+  basket: Fragrance[]
+}

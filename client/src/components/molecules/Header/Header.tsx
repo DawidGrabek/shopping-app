@@ -14,7 +14,7 @@ const Header: React.FC<Props> = ({ children, isUnauthorizedApp }) => {
     <StyledHeader isUnauthorizedApp={isUnauthorizedApp}>
       {children}
       {isUnauthorizedApp ? null : (
-        <div>
+        <div data-testid="navigation-icons">
           <NavigationIcons />
         </div>
       )}

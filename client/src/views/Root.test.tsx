@@ -1,7 +1,5 @@
-import React from 'react'
-
 import { screen } from '@testing-library/react'
-import data from 'data'
+import { User } from 'assets/types'
 import renderWithProviders from 'helpers/renderWithProviders'
 import * as hooks from 'hooks/useApi'
 import { vi } from 'vitest'
@@ -16,30 +14,25 @@ const testUser = {
   orders: [{ _id: '1', amount: 1, fragranceName: 'Test', price: 150, capacity: 100 }],
 }
 
+const getMockAuth = (user: User | null) => ({
+  user,
+  signIn: vi.fn(),
+  signOut: vi.fn(),
+  signUp: vi.fn(),
+  error: null,
+  addOrder: vi.fn(),
+})
+
 describe('<Root />', () => {
   it('Should render UnauthorizedApp when user is not authenticated', () => {
-    vi.spyOn(hooks, 'useAuth').mockImplementation(() => ({
-      user: null,
-      signIn: vi.fn(),
-      signOut: vi.fn(),
-      signUp: vi.fn(),
-      error: null,
-      addOrder: vi.fn(),
-    }))
+    vi.spyOn(hooks, 'useAuth').mockImplementation(() => getMockAuth(null))
     renderWithProviders(<Root />)
 
     expect(screen.getByText(/log in/i, { selector: 'h1' })).toBeInTheDocument()
   })
 
   it('Should render AuthorizedApp on route / when user is authenticated', () => {
-    vi.spyOn(hooks, 'useAuth').mockImplementation(() => ({
-      user: testUser,
-      signIn: vi.fn(),
-      signOut: vi.fn(),
-      signUp: vi.fn(),
-      error: null,
-      addOrder: vi.fn(),
-    }))
+    vi.spyOn(hooks, 'useAuth').mockImplementation(() => getMockAuth(testUser))
 
     renderWithProviders(<Root />)
 

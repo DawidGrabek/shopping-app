@@ -1,11 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Fragrance } from 'assets/types'
+import { BasketState, Fragrance } from 'assets/types'
 
-interface BasketState {
-  basket: Fragrance[]
-}
-
-const initialState: BasketState = { basket: [] }
+export const initialState: BasketState = { basket: [] }
 
 export const basketSlice = createSlice({
   name: 'basket',
