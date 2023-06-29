@@ -76,3 +76,7 @@ export interface ErrorObject {
 export interface BasketState {
   basket: Fragrance[]
 }
+
+export interface SearchBarState {
+  isShowingSearchBar: boolean
+}
