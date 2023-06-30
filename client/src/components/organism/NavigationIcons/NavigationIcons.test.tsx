@@ -1,50 +1,70 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-
-import { render, fireEvent } from '@testing-library/react'
-import { RootState } from 'app/store'
-import { BasketState } from 'assets/types'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { store } from 'app/store'
+import { Fragrance } from 'assets/types'
+import { add } from 'features/basketSlice'
 import { toggleSearching } from 'features/searchBarSlice'
 import renderWithProviders from 'helpers/renderWithProviders'
-import configureMockStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
+import { vi } from 'vitest'
 
 import NavigationIcons from './NavigationIcons'
 
-const middlewares = [thunk]
-const mockStore = configureMockStore<BasketState>(middlewares)
+describe('<NavigationIcons />', () => {
+  it('Should render navigation icons with correct amount', () => {
+    const fragrances: Fragrance[] = [
+      {
+        fragranceName: 'test1',
+        price: 10,
+        src: 'test',
+        capacity: 100,
+        amount: 1,
+      },
+      {
+        fragranceName: 'test2',
+        price: 10,
+        src: 'test',
+        capacity: 100,
+        amount: 2,
+      },
+      {
+        // IF FRGRNACE NAME IS THE SAME, IT WILL BE ADDED TO THE PREVIOUS ONE
+        fragranceName: 'test2',
+        price: 10,
+        src: 'test',
+        capacity: 100,
+        amount: 2,
+      },
+    ]
+    fragrances.forEach((fragrance) => {
+      store.dispatch(add(fragrance))
+    })
+    renderWithProviders(<NavigationIcons />)
 
-describe('NavigationIcons', () => {
-  it('')
-  // it('Should render navigation icons', () => {
-  //   const initialState: BasketState = { basket: [] }
-  //   const store = mockStore(initialState)
-  //   const { getByTestId, getByText } = renderWithProviders(
-  //     <Provider store={store}>
-  //       <NavigationIcons />
-  //     </Provider>
-  //   )
-  //   // Check if the navigation icons are rendered
-  //   expect(getByTestId('navigation-icons')).toBeInTheDocument()
-  //   // Simulate a click on the search icon
-  //   fireEvent.click(getByText('search'))
-  //   // Check if the toggleSearching action is dispatched
-  //   expect(store.getActions()).toContainEqual(toggleSearching())
-  // })
-  // it('should display the basket count', () => {
-  //   const store = mockStore({
-  //     basket: {
-  //       basket: [
-  //         /* basket items */
-  //       ],
-  //     },
-  //   })
-  //   const { getByText } = render(
-  //     <Provider store={store}>
-  //       <NavigationIcons />
-  //     </Provider>
-  //   )
-  //   // Check if the basket count is rendered
-  //   expect(getByText(store.getState().basket.basket.length.toString())).toBeInTheDocument()
-  // })
+    const amountCircle = screen.getByTestId('amount')
+
+    expect(amountCircle.textContent).toBe('2')
+  })
+
+  it('Should dispatch toggleSearching action when search icon is clicked', () => {
+    // const mockStore = store
+    const dispatchMock = vi.spyOn(store, 'dispatch')
+    renderWithProviders(<NavigationIcons />)
+
+    const searchIcon = screen.getByTestId('search-icon')
+    userEvent.click(searchIcon)
+
+    expect(dispatchMock).toHaveBeenCalledTimes(1)
+    expect(dispatchMock).toHaveBeenCalledWith(toggleSearching())
+  })
+
+  test('Changing route from / to /profile', () => {
+    renderWithProviders(<NavigationIcons />)
+
+    const profileLink = screen.getByTestId('link-profile')
+    expect(document.URL).not.toContain('/profile')
+
+    userEvent.click(profileLink)
+
+    expect(document.URL).toContain('/profile')
+  })
 })

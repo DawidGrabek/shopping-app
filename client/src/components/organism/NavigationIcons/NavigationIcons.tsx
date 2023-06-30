@@ -18,17 +18,22 @@ const NavigationIcons: React.FC = () => {
 
   return (
     <>
-      <Link to="/">
+      <Link to="/" data-testid="link-home">
         <HouseIcon name="home" style={{ cursor: 'pointer' }} />
       </Link>
-      <SearchIcon onClick={handleClick} name="search" style={{ cursor: 'pointer' }} />
-      <Link to="profile">
+      <SearchIcon
+        onClick={handleClick}
+        name="search"
+        style={{ cursor: 'pointer' }}
+        data-testid="search-icon"
+      />
+      <Link to="profile" data-testid="link-profile">
         <UserIcon name="profile" style={{ cursor: 'pointer' }} />
       </Link>
-      <Link to="basket">
+      <Link to="basket" data-testid="link-basket">
         <BasketWrapper>
           <StyledBasketIcon />
-          <StyledCircle>{amount}</StyledCircle>
+          <StyledCircle data-testid="amount">{amount}</StyledCircle>
         </BasketWrapper>
       </Link>
     </>
