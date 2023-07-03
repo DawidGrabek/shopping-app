@@ -1,9 +1,9 @@
-import renderWithProviders from 'helpers/renderWithProviders'
+import { render } from 'test-utils'
 
 import Footer from './Footer'
 
 describe('<Footer />', () => {
   it('Should render Footer component', () => {
-    renderWithProviders(<Footer />)
+    render(<Footer />)
   })
 })

@@ -1,10 +1,10 @@
-import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { store } from 'app/store'
 import { Fragrance } from 'assets/types'
 import { add } from 'features/basketSlice'
 import { toggleSearching } from 'features/searchBarSlice'
 import renderWithProviders from 'helpers/renderWithProviders'
+import { render, screen } from 'test-utils'
 import { vi } from 'vitest'
 
 import NavigationIcons from './NavigationIcons'
@@ -38,7 +38,7 @@ describe('<NavigationIcons />', () => {
     fragrances.forEach((fragrance) => {
       store.dispatch(add(fragrance))
     })
-    renderWithProviders(<NavigationIcons />)
+    render(<NavigationIcons />)
 
     const amountCircle = screen.getByTestId('amount')
 

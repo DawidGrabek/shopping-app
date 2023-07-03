@@ -1,6 +1,5 @@
-import { fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import renderWithProviders from 'helpers/renderWithProviders'
+import { render, screen } from 'test-utils'
 import { vi } from 'vitest'
 
 import FormField from './FormField'
@@ -9,7 +8,7 @@ describe('<FormField />', () => {
   const handleChange = vi.fn()
 
   it('Renders label and input element', () => {
-    renderWithProviders(
+    render(
       <FormField
         id="test-input"
         labelText="Test Label"
@@ -28,7 +27,7 @@ describe('<FormField />', () => {
   })
 
   it('Renders error message when error prop is provided', () => {
-    renderWithProviders(
+    render(
       <FormField
         id="test-input"
         labelText="Test Label"
@@ -47,7 +46,7 @@ describe('<FormField />', () => {
   })
 
   it('Calls onChange handler when input value changes', () => {
-    renderWithProviders(
+    render(
       <FormField
         id="test-input"
         labelText="Test Label"
