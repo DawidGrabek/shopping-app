@@ -3,7 +3,6 @@ import { store } from 'app/store'
 import { Fragrance } from 'assets/types'
 import { add } from 'features/basketSlice'
 import { toggleSearching } from 'features/searchBarSlice'
-import renderWithProviders from 'helpers/renderWithProviders'
 import { render, screen } from 'test-utils'
 import { vi } from 'vitest'
 
@@ -48,7 +47,7 @@ describe('<NavigationIcons />', () => {
   it('Should dispatch toggleSearching action when search icon is clicked', () => {
     // const mockStore = store
     const dispatchMock = vi.spyOn(store, 'dispatch')
-    renderWithProviders(<NavigationIcons />)
+    render(<NavigationIcons />)
 
     const searchIcon = screen.getByTestId('search-icon')
     userEvent.click(searchIcon)
@@ -58,7 +57,7 @@ describe('<NavigationIcons />', () => {
   })
 
   test('Changing route from / to /profile', () => {
-    renderWithProviders(<NavigationIcons />)
+    render(<NavigationIcons />)
 
     const profileLink = screen.getByTestId('link-profile')
     expect(document.URL).not.toContain('/profile')
