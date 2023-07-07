@@ -2,7 +2,6 @@ import userEvent from '@testing-library/user-event'
 import data from 'data'
 import { render, screen } from 'test-utils'
 
-import Modal from '../Modal/Modal'
 import FragranceList from './FragranceList'
 
 describe('FragranceList', () => {
