@@ -2,11 +2,7 @@ import React from 'react'
 
 import { StyledButton } from './Button.styles'
 
-enum ButtonType {
-  Button = 'button',
-  Submit = 'submit',
-  Reset = 'reset',
-}
+type ButtonType = 'button' | 'submit' | 'reset'
 
 interface Props {
   isBig?: boolean
