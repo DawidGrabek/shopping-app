@@ -1,5 +1,6 @@
 import userEvent from '@testing-library/user-event'
-import { render, screen } from 'test-utils'
+import { wait } from '@testing-library/user-event/dist/utils'
+import { render, screen, waitFor } from 'test-utils'
 import { vi } from 'vitest'
 
 import FormField from './FormField'
@@ -45,7 +46,7 @@ describe('<FormField />', () => {
     expect(errorMessage.textContent).toBe('This field is required')
   })
 
-  it('Calls onChange handler when input value changes', () => {
+  it('Calls onChange handler when input value changes', async () => {
     render(
       <FormField
         id="test-input"
@@ -62,6 +63,5 @@ describe('<FormField />', () => {
     userEvent.type(input, text)
 
     expect(handleChange).toHaveBeenCalledTimes(text.length)
-    // expect(input).toHaveValue(text)
   })
 })
