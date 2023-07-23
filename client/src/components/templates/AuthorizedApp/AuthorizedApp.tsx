@@ -20,6 +20,7 @@ const AuthorizedApp: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // Separate this function for testing purposes
   const onSubmitOrder: SubmitHandler<OrderDetails> = (data) => {
     dispatch(add(data))
     navigate('/order/final')
