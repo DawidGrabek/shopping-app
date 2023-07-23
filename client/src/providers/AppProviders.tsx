@@ -23,7 +23,7 @@ const AppProviders: React.FC<Props> = ({ children }) => {
   )
 }
 
-StoreProvider.propTypes = {
+AppProviders.propTypes = {
   children: PropTypes.node,
 }
 
