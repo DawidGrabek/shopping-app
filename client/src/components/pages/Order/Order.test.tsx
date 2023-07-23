@@ -1,8 +1,9 @@
 import { Provider } from 'react-redux'
 
 import userEvent from '@testing-library/user-event'
+import { OrderDetails } from 'assets/types'
 import configureStore from 'redux-mock-store'
-import { fireEvent, render, screen, waitFor } from 'test-utils'
+import { render, screen, waitFor } from 'test-utils'
 import { Mock, vi } from 'vitest'
 
 import Order from './Order'
@@ -11,14 +12,14 @@ import Order from './Order'
 const mockStore = configureStore([])
 
 describe('<Order />', () => {
-  const initialState = {
+  const initialState: { order: { orderDetails: OrderDetails } } = {
     order: {
       orderDetails: {
         city: '',
         postalCode: '',
         street: '',
-        homeNumber: '',
-        mobileNumber: '',
+        homeNumber: 0,
+        mobileNumber: 0,
       },
     },
   }
