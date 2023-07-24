@@ -27,6 +27,20 @@ describe('<Login />', () => {
     expect(screen.getByRole('link', { name: 'Sign up' })).toBeInTheDocument()
   })
 
+  it('Diplays error message when wrong credentials are passed', async () => {
+    render(<Login />)
+
+    // Enter form data
+    userEvent.type(screen.getByLabelText('E-mail'), 'test@test.com')
+    userEvent.type(screen.getByLabelText('Password'), 'password123')
+
+    // Submit the form
+    userEvent.click(screen.getByRole('button', { name: 'Log in' }))
+
+    // Assert that the error message is displayed
+    await waitFor(() => expect(screen.getByText(/Invalid/i)).toBeInTheDocument())
+  })
+
   it('Calls the signIn function with the form data on form submission', async () => {
     // null means that the user is not authenticated
     const mockAuth = getMockAuth(null)
@@ -46,24 +60,5 @@ describe('<Login />', () => {
       email: 'test@test.com',
       password: 'password123',
     })
-  })
-
-  it('Displays the error message when there is an authentication error', async () => {
-    // Simulate an authentication error by setting the error property in mockAuth
-    const mockAuth = getMockAuth(null)
-    mockAuth.error = 'Authentication failed'
-
-    vi.spyOn(hooks, 'useAuth').mockReturnValue(mockAuth)
-    render(<Login />)
-
-    // Enter form data
-    userEvent.type(screen.getByLabelText('E-mail'), 'test@test.com')
-    userEvent.type(screen.getByLabelText('Password'), 'password123')
-
-    // Submit the form
-    userEvent.click(screen.getByRole('button', { name: 'Log in' }))
-
-    // Assert that the error message is displayed
-    await waitFor(() => expect(screen.getByText('Authentication failed')).toBeInTheDocument())
   })
 })

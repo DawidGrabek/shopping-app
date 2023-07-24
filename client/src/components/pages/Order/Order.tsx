@@ -1,6 +1,5 @@
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -8,7 +7,6 @@ import orderSchema from 'assets/schemas/orderSchema'
 import { OrderDetails } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
-import { add } from 'features/orderSlice'
 
 import { Wrapper } from './Order.styles'
 

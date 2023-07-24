@@ -23,8 +23,8 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
         try {
           const response = await AxiosApi.get('/api/data')
           setUser(response.data)
-        } catch (e) {
-          console.log(e)
+        } catch (e: unknown) {
+          setError('Invalid token')
         }
       })()
   }, [])
