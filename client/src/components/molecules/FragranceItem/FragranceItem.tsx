@@ -99,11 +99,13 @@ const FragranceItem: React.FC<FragranceItemProps> = ({
       isBasketList={isBasketList}
       isInModal={isInModal}
       onClick={handleClick}
+      data-testid="fragrance-item"
     >
       <FragranceImage
         src={src}
         alt={`${fragranceName} fragrance`}
         onClick={handleOpenFragranceDetails}
+        data-testid="fragrance-image"
       />
       <FragranceName>{`${fragranceName} ${capacity}ml, ${price}zł`}</FragranceName>
       <ButtonAndSelectWrapper as="form" onSubmit={(e) => handleSubmit(e)}>

@@ -5,7 +5,14 @@ import Button from 'components/atoms/Button/Button'
 
 import { ModalBackground, ModalWrapper } from './Modal.styles'
 
-const modalContainer = document.getElementById('modal-container')
+let modalContainer = document.getElementById('modal-container')
+
+// for testing purposes
+if (!modalContainer) {
+  modalContainer = document.createElement('div')
+  modalContainer.setAttribute('id', 'modal-container')
+  document.body.appendChild(modalContainer)
+}
 
 interface Props {
   handleClose: () => void
@@ -30,7 +37,7 @@ const Modal: React.FC<Props> = ({ handleClose, children }) => {
   return ReactDOM.createPortal(
     <>
       <ModalBackground onClick={handleClose} />
-      <ModalWrapper>
+      <ModalWrapper data-testid="modal">
         {children}
         <Button isNegative isBig onClick={handleClose}>
           Close

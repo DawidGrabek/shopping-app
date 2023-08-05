@@ -33,7 +33,7 @@ const FragranceList: React.FC = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="authorized-app">
       {data.map((item) => (
         <FragranceItem
           addToBasket={addToBasket}

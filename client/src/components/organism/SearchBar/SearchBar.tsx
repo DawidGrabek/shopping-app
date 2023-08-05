@@ -84,6 +84,7 @@ const SearchBar = () => {
               capacity={selectedItem.capacity}
               price={selectedItem.price}
               src={selectedItem.src}
+              data-testid="modal"
             />
           </Modal>
         ) : null}
