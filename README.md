@@ -2,7 +2,7 @@
 
 ## Description
 
-My Application is an application written in **React** using **TypeScript** on the client side and **Node.js** with **Express** on the server side. The application uses **MongoDB** as the database. In the future, **unit tests, integration tests, and end-to-end tests will be added** to the client side. The application will continue to be developed and expanded.
+My Application is an application written in **React** using **TypeScript** on the client side and **Node.js** with **Express** on the server side. The application uses **MongoDB** as the database. In the future, **end-to-end tests and DTO will be added** to the client side. The application will continue to be developed and expanded.
 
 ## Preview
 
