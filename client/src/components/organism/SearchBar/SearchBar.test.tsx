@@ -4,7 +4,7 @@ import { render, screen, waitFor } from 'test-utils'
 
 import SearchBar from './SearchBar'
 
-describe('SearchBar', () => {
+describe('<SearchBar />', () => {
   it('Renders the search input', () => {
     render(<SearchBar />)
 

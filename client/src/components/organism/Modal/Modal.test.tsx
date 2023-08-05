@@ -4,7 +4,7 @@ import { vi } from 'vitest'
 
 import Modal from './Modal'
 
-describe('Modal', () => {
+describe('<Modal />', () => {
   it('Renders the modal content', () => {
     const handleClose = vi.fn()
     render(

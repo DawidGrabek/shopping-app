@@ -11,7 +11,7 @@ import BasketList from './BasketList'
 
 const mockStore = configureStore([])
 
-describe('BasketList', () => {
+describe('<BasketList />', () => {
   const fragrance1: Fragrance = {
     fragranceName: 'Fragrance 1',
     capacity: 100,

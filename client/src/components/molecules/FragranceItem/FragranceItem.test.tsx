@@ -10,7 +10,7 @@ const defaultProps = {
   price: 10,
   src: 'test.jpg',
 }
-describe('FragranceItem', () => {
+describe('<FragranceItem />', () => {
   it('Renders fragrance name, capacity, and price', () => {
     render(<FragranceItem {...defaultProps} />)
     const fragranceName = screen.getByText('Test Fragrance 50ml, 10zł')

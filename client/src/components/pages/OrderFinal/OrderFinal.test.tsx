@@ -57,7 +57,7 @@ const fragrance2: Fragrance = {
 // Mock the useNavigate hook to get the navigate function
 const mockNavigate = vi.fn()
 
-describe('OrderFinal', () => {
+describe('<OrderFinal />', () => {
   it('Renders user details correctly', () => {
     vi.spyOn(hooks, 'useAuth').mockImplementation(() => getMockAuth(mockUser))
     render(<OrderFinal />)
