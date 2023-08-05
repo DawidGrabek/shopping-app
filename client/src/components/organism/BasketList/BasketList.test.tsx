@@ -101,7 +101,7 @@ describe('BasketList', () => {
     userEvent.click(proceedButton)
 
     // Assert that navigation occurred to the correct path
-    expect(document.URL).toContain('/order')
+    expect(location.pathname).toContain('/order')
   })
 
   it('Navigates to the home (/) page when Close button is clicked', () => {
@@ -124,8 +124,8 @@ describe('BasketList', () => {
     userEvent.click(proceedButton)
 
     // Assert that navigation occurred to the correct path
-    expect(document.URL).toContain('/')
-    expect(document.URL).not.toContain('/order')
-    expect(document.URL).not.toContain('/profile')
+    expect(location.pathname).toContain('/')
+    expect(location.pathname).not.toContain('/order')
+    expect(location.pathname).not.toContain('/profile')
   })
 })

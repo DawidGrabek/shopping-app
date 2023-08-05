@@ -56,14 +56,14 @@ describe('<NavigationIcons />', () => {
     expect(dispatchMock).toHaveBeenCalledWith(toggleSearching())
   })
 
-  test('Changing route from / to /profile', () => {
+  it('Changing route from / to /profile', () => {
     render(<NavigationIcons />)
 
     const profileLink = screen.getByTestId('link-profile')
-    expect(document.URL).not.toContain('/profile')
+    expect(location.pathname).not.toContain('/profile')
 
     userEvent.click(profileLink)
 
-    expect(document.URL).toContain('/profile')
+    expect(location.pathname).toContain('/profile')
   })
 })

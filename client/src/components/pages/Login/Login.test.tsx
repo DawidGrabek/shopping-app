@@ -38,7 +38,7 @@ describe('<Login />', () => {
     userEvent.click(screen.getByRole('button', { name: 'Log in' }))
 
     // Assert that the error message is displayed
-    await waitFor(() => expect(screen.getByText(/Invalid/i)).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText(/invalid/i)).toBeInTheDocument())
   })
 
   it('Calls the signIn function with the form data on form submission', async () => {
