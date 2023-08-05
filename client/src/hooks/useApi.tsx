@@ -24,7 +24,8 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
           const response = await AxiosApi.get('/api/data')
           setUser(response.data)
         } catch (e: unknown) {
-          setError('Invalid token')
+          // don't handle error, because after token expiration error will be thrown
+          // setError('Invalid token')
         }
       })()
   }, [])
