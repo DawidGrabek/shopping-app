@@ -1,4 +1,4 @@
-import { User } from 'assets/types'
+import { User } from 'helpers/types'
 import * as hooks from 'hooks/useApi'
 import { render, screen } from 'test-utils'
 import { vi } from 'vitest'

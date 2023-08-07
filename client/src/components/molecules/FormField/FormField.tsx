@@ -1,9 +1,9 @@
 import React, { InputHTMLAttributes } from 'react'
 import { FieldError } from 'react-hook-form'
 
-import { ErrorObject } from 'assets/types'
 import { Input } from 'components/atoms/Input/Input.styles'
 import { Label } from 'components/atoms/Label/Label.styles'
+import { ErrorObject } from 'helpers/types'
 import PropTypes from 'prop-types'
 
 import { Wrapper } from './FormField.styles'

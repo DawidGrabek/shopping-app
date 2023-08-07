@@ -1,4 +1,4 @@
-import { OrderDetails } from 'assets/types'
+import { OrderDetails } from 'helpers/types'
 
 import orderReducer, { add } from './orderSlice'
 

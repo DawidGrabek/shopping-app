@@ -2,7 +2,7 @@ import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom'
 
 import userEvent from '@testing-library/user-event'
-import { Fragrance } from 'assets/types'
+import { Fragrance } from 'helpers/types'
 // import { createMemoryHistory } from 'history'
 import configureStore from 'redux-mock-store'
 import { render, screen } from 'test-utils'

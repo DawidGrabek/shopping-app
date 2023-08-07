@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { SearchBarState } from 'assets/types'
+import { SearchBarState } from 'helpers/types'
 
 const initialState: SearchBarState = {
   isShowingSearchBar: false,

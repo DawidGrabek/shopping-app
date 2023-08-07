@@ -1,5 +1,5 @@
 export interface Fragrance {
-  fragranceName: string
+  name: string
   amount: number
   capacity: number
   price: number
@@ -13,6 +13,7 @@ export interface User {
   firstName: string
   lastName: string
   orders: Order[]
+  password: string
 }
 
 export interface Order {

@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { Fragrance } from 'assets/types'
 import FragranceItem from 'components/molecules/FragranceItem/FragranceItem'
 import data from 'data'
 import { add } from 'features/basketSlice'
+import { Fragrance } from 'helpers/types'
 import useModal from 'hooks/useModal'
 
 import { Wrapper } from './FragranceList.styles'
 
-const tempFragrance = {
-  fragranceName: '',
+const tempFragrance: Fragrance = {
+  name: '',
   amount: 0,
   capacity: 0,
   price: 0,
@@ -37,10 +37,10 @@ const FragranceList: React.FC = () => {
       {data.map((item) => (
         <FragranceItem
           addToBasket={addToBasket}
-          key={item.fragranceName}
+          key={item.name}
           openFragranceDetails={handleOpenFragranceDetails}
           setCurrentFragrance={handleSetCurrentFragrance}
-          fragranceName={item.fragranceName}
+          name={item.name}
           capacity={item.capacity}
           price={item.price}
           src={item.src}
@@ -51,7 +51,7 @@ const FragranceList: React.FC = () => {
           <FragranceItem
             isInModal
             addToBasket={addToBasket}
-            fragranceName={currentFragrance.fragranceName}
+            name={currentFragrance.name}
             capacity={currentFragrance.capacity}
             price={currentFragrance.price}
             src={currentFragrance.src}

@@ -1,8 +1,8 @@
 import { Provider } from 'react-redux'
 
 import userEvent from '@testing-library/user-event'
-import { Fragrance, OrderDetails, User } from 'assets/types'
 import { clear } from 'features/basketSlice'
+import { Fragrance, OrderDetails, User } from 'helpers/types'
 import * as hooks from 'hooks/useApi'
 import configureStore from 'redux-mock-store'
 import { render, screen, waitFor } from 'test-utils'

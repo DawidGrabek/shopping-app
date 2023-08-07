@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { ReactComponent as SearchIcon } from 'assets/icons/search-icon.svg'
-import { Fragrance } from 'assets/types'
 import { Input } from 'components/atoms/Input/Input.styles'
 import data from 'data'
 import { useCombobox } from 'downshift'
 import { add } from 'features/basketSlice'
 import { toggleSearching } from 'features/searchBarSlice'
+import { Fragrance } from 'helpers/types'
 import useModal from 'hooks/useModal'
 
 import FragranceItem from '../../molecules/FragranceItem/FragranceItem'

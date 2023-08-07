@@ -1,9 +1,10 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { ApiContextType, Basket, LoginData, User } from 'assets/types'
 import { AxiosError } from 'axios'
 import AxiosApi from 'axios.config'
+import { UserFromApiDto, mapApiDataDtoFromBackToFront } from 'helpers/dto'
+import { ApiContextType, Basket, LoginData } from 'helpers/types'
 
 interface Props {
   children: ReactNode
@@ -12,7 +13,7 @@ interface Props {
 const ApiContext = React.createContext<ApiContextType | undefined>(undefined)
 
 export const ApiProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<UserFromApiDto | null>(null)
   const [error, setError] = useState<string>('')
   const navigate = useNavigate()
 
@@ -22,7 +23,10 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
       (async () => {
         try {
           const response = await AxiosApi.get('/api/data')
-          setUser(response.data)
+
+          const dtoResponse = mapApiDataDtoFromBackToFront(response.data)
+
+          setUser(dtoResponse)
         } catch (e: unknown) {
           // don't handle error, because after token expiration error will be thrown
           // setError('Invalid token')
@@ -33,7 +37,10 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
   const signIn = async (formData: LoginData): Promise<void> => {
     try {
       const response = await AxiosApi.post('/api/auth', formData)
-      setUser(response.data.user)
+
+      const dtoResponse = mapApiDataDtoFromBackToFront(response.data)
+
+      setUser(dtoResponse)
       localStorage.setItem('token', response.data.data)
     } catch (error: unknown) {
       if (
@@ -77,7 +84,11 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
 
       // After adding new order you should get new data
       const response = await AxiosApi.get('/api/data')
-      setUser(response.data)
+
+      const dtoResponse = mapApiDataDtoFromBackToFront(response.data)
+      setUser(dtoResponse)
+
+      // setUser(response.data)
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         console.error('Error adding basket to user', error)

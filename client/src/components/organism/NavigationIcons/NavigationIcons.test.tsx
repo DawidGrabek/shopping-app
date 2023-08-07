@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event'
 import { store } from 'app/store'
-import { Fragrance } from 'assets/types'
 import { add } from 'features/basketSlice'
 import { toggleSearching } from 'features/searchBarSlice'
+import { Fragrance } from 'helpers/types'
 import { render, screen } from 'test-utils'
 import { vi } from 'vitest'
 

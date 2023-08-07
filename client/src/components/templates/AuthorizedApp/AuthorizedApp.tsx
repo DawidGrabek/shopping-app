@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 
 import { RootState } from 'app/store'
-import { OrderDetails } from 'assets/types'
 import Footer from 'components/molecules/Footer/Footer'
 import Header from 'components/molecules/Header/Header'
 import BasketList from 'components/organism/BasketList/BasketList'
@@ -14,6 +13,7 @@ import Order from 'components/pages/Order/Order'
 import OrderFinal from 'components/pages/OrderFinal/OrderFinal'
 import Profile from 'components/pages/Profile/Profile'
 import { add } from 'features/orderSlice'
+import { OrderDetails } from 'helpers/types'
 
 const AuthorizedApp: React.FC = () => {
   const { isShowingSearchBar } = useSelector((state: RootState) => state.searchBar)

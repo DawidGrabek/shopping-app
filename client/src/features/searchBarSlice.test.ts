@@ -1,4 +1,4 @@
-import { SearchBarState } from 'assets/types'
+import { SearchBarState } from 'helpers/types'
 
 import searchBarReducer, { toggleSearching } from './searchBarSlice'
 

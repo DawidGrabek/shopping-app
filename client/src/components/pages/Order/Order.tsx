@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import orderSchema from 'assets/schemas/orderSchema'
-import { OrderDetails } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
+import { OrderDetails } from 'helpers/types'
 
 import { Wrapper } from './Order.styles'
 

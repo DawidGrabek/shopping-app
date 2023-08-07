@@ -6,6 +6,7 @@ import { useAuth } from 'hooks/useApi'
 
 const Root: React.FC = () => {
   const { user } = useAuth()
+  console.log(user)
 
   return <>{user ? <AuthorizedApp /> : <UnauthorizedApp />}</>
 }
