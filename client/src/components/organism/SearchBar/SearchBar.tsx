@@ -14,7 +14,7 @@ import FragranceItem from '../../molecules/FragranceItem/FragranceItem'
 import { SearchResult, SearchResultsItem, SearchWrapper, Wrapper } from './SearchBar.styles'
 
 interface SearchingFragrance {
-  fragranceName: string
+  name: string
   capacity: number
   price: number
   src: string
@@ -24,7 +24,7 @@ const getFragrancesFilter = (inputValue: string) => {
   const lowerCasedInputValue = inputValue.toLowerCase()
 
   return function fragrancesFilter(fragrance: SearchingFragrance) {
-    return !inputValue || fragrance.fragranceName.toLowerCase().includes(lowerCasedInputValue)
+    return !inputValue || fragrance.name.toLowerCase().includes(lowerCasedInputValue)
   }
 }
 
@@ -41,7 +41,7 @@ const SearchBar = () => {
       },
       items,
       itemToString(item) {
-        return item ? item.fragranceName : ''
+        return item ? item.name : ''
       },
       onSelectedItemChange({ selectedItem }) {
         handleOpenModal()
@@ -64,23 +64,26 @@ const SearchBar = () => {
           autoFocus
         />
         <SearchResult isVisible={isOpen} {...getMenuProps()}>
-          {(isOpen &&
+          {isOpen &&
             items.map((item, index) => (
               <SearchResultsItem
                 isHighlighted={highlightedIndex === index}
                 {...getItemProps({ item, index })}
-                key={item.fragranceName}
+                key={item.name}
               >
-                {item.fragranceName}
+                {item.name}
               </SearchResultsItem>
-            ))) || <SearchResultsItem>There are nothing with this name</SearchResultsItem>}
+            ))}
+          {isOpen && !items.length && (
+            <SearchResultsItem>There are nothing with this name</SearchResultsItem>
+          )}
         </SearchResult>
         {modalIsOpen && selectedItem ? (
           <Modal handleClose={handleCloseModal}>
             <FragranceItem
               isInModal
               addToBasket={addToBasket}
-              fragranceName={selectedItem.fragranceName}
+              name={selectedItem.name}
               capacity={selectedItem.capacity}
               price={selectedItem.price}
               src={selectedItem.src}

@@ -1,3 +1,5 @@
+import { OrderFromApiDto, UserFromApiDto } from './dto'
+
 export interface Fragrance {
   name: string
   amount: number
@@ -9,6 +11,7 @@ export interface Fragrance {
 
 export interface User {
   _id: string
+  data: string
   email: string
   firstName: string
   lastName: string
@@ -46,7 +49,7 @@ export interface RegisterData {
 }
 
 export interface ApiContextType {
-  user: User | null
+  user: UserFromApiDto | null
   signIn: (formData: LoginData) => Promise<void>
   signOut: () => void
   signUp: (formData: LoginData) => Promise<void>
@@ -54,7 +57,7 @@ export interface ApiContextType {
   addOrder: (basket: any) => Promise<void>
 }
 
-export interface Basket extends Order {}
+export interface Basket extends OrderFromApiDto {}
 
 export interface ErrorObject {
   email?: {

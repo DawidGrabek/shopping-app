@@ -5,7 +5,7 @@ import { vi } from 'vitest'
 import FragranceItem from './FragranceItem'
 
 const defaultProps = {
-  fragranceName: 'Test Fragrance',
+  name: 'Test Fragrance',
   capacity: 50,
   price: 10,
   src: 'test.jpg',
@@ -13,8 +13,8 @@ const defaultProps = {
 describe('<FragranceItem />', () => {
   it('Renders fragrance name, capacity, and price', () => {
     render(<FragranceItem {...defaultProps} />)
-    const fragranceName = screen.getByText('Test Fragrance 50ml, 10zł')
-    expect(fragranceName).toBeInTheDocument()
+    const name = screen.getByText('Test Fragrance 50ml, 10zł')
+    expect(name).toBeInTheDocument()
   })
 
   it('Calls addToBasket function when "ADD" button is clicked', () => {
@@ -31,7 +31,7 @@ describe('<FragranceItem />', () => {
     const amountSelect = screen.getByRole('combobox')
     userEvent.selectOptions(amountSelect, '3')
     expect(editAmountMock).toHaveBeenCalledWith({
-      fragranceName: 'Test Fragrance',
+      name: 'Test Fragrance',
       capacity: 50,
       price: 10,
       src: 'test.jpg',

@@ -22,7 +22,6 @@ const BasketList: React.FC = () => {
   const handleGoProceed = () => {
     basket.length ? navigate('/order') : setError('Basket is empty!')
   }
-  const openFragranceDetails = () => {}
 
   return (
     <Wrapper>
@@ -30,15 +29,14 @@ const BasketList: React.FC = () => {
         {basket.length ? (
           basket.map((props) => (
             <FragranceItem
-              key={props.fragranceName}
-              fragranceName={props.fragranceName}
+              key={props.name}
+              name={props.name}
               capacity={props.capacity}
               price={props.price}
               src={props.src}
               amount={props.amount}
               addToBasket={addToBasket}
               editAmount={editAmount}
-              openFragranceDetails={openFragranceDetails}
               height="50%"
               isBasketList
               isInModal

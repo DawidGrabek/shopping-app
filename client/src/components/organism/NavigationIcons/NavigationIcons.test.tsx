@@ -12,14 +12,14 @@ describe('<NavigationIcons />', () => {
   it('Should render navigation icons with correct amount', () => {
     const fragrances: Fragrance[] = [
       {
-        fragranceName: 'test1',
+        name: 'test1',
         price: 10,
         src: 'test',
         capacity: 100,
         amount: 1,
       },
       {
-        fragranceName: 'test2',
+        name: 'test2',
         price: 10,
         src: 'test',
         capacity: 100,
@@ -27,7 +27,7 @@ describe('<NavigationIcons />', () => {
       },
       {
         // IF FRGRNACE NAME IS THE SAME, IT WILL BE ADDED TO THE PREVIOUS ONE
-        fragranceName: 'test2',
+        name: 'test2',
         price: 10,
         src: 'test',
         capacity: 100,

@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { AxiosError } from 'axios'
 import AxiosApi from 'axios.config'
-import { UserFromApiDto, mapApiDataDtoFromBackToFront } from 'helpers/dto'
+import {
+  UserFromApiDto,
+  mapApiDataDtoFromBackendToFrontend,
+  mapBasketDataDtoToBackend,
+} from 'helpers/dto'
 import { ApiContextType, Basket, LoginData } from 'helpers/types'
 
 interface Props {
@@ -24,7 +28,7 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
         try {
           const response = await AxiosApi.get('/api/data')
 
-          const dtoResponse = mapApiDataDtoFromBackToFront(response.data)
+          const dtoResponse = mapApiDataDtoFromBackendToFrontend(response.data)
 
           setUser(dtoResponse)
         } catch (e: unknown) {
@@ -38,7 +42,7 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
     try {
       const response = await AxiosApi.post('/api/auth', formData)
 
-      const dtoResponse = mapApiDataDtoFromBackToFront(response.data)
+      const dtoResponse = mapApiDataDtoFromBackendToFrontend(response.data.user)
 
       setUser(dtoResponse)
       localStorage.setItem('token', response.data.data)
@@ -75,17 +79,20 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
     }
   }
 
-  const addOrder = async (basket: Basket): Promise<void> => {
+  const addOrder = async (basket: Basket[]): Promise<void> => {
     try {
+      // mapFrontendDataDtoToBackend(basket)
+      const dtoBasket = mapBasketDataDtoToBackend(basket)
+
       await AxiosApi.post('/api/users/addOrder', {
         email: user?.email,
-        orders: basket,
+        orders: dtoBasket,
       })
 
       // After adding new order you should get new data
       const response = await AxiosApi.get('/api/data')
 
-      const dtoResponse = mapApiDataDtoFromBackToFront(response.data)
+      const dtoResponse = mapApiDataDtoFromBackendToFrontend(response.data)
       setUser(dtoResponse)
 
       // setUser(response.data)

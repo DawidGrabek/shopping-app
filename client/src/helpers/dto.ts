@@ -1,4 +1,4 @@
-import { Order, User } from './types'
+import { Basket, Order, User } from './types'
 
 export interface OrderFromApiDto {
   id: string
@@ -10,6 +10,7 @@ export interface OrderFromApiDto {
 }
 
 export interface UserFromApiDto {
+  data: string
   id: string
   email: string
   firstName: string
@@ -18,10 +19,11 @@ export interface UserFromApiDto {
   password: string
 }
 
-export const mapApiDataDtoFromBackToFront = (data: User): UserFromApiDto => {
+export const mapApiDataDtoFromBackendToFrontend = (data: User): UserFromApiDto => {
   const userClone = { ...data }
 
   return {
+    data: userClone.data,
     email: userClone.email,
     id: userClone._id,
     firstName: userClone.firstName,
@@ -35,4 +37,14 @@ export const mapApiDataDtoFromBackToFront = (data: User): UserFromApiDto => {
     })),
     password: userClone.password,
   }
+}
+
+export const mapBasketDataDtoToBackend = (data: Basket[]): Order[] => {
+  return data.map((order: Basket) => ({
+    _id: order?.id,
+    fragranceName: order.name,
+    price: order.price,
+    amount: order.amount,
+    capacity: order.capacity,
+  }))
 }

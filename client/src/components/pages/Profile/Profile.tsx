@@ -2,7 +2,6 @@ import React from 'react'
 
 import Button from 'components/atoms/Button/Button'
 import { OrderFromApiDto } from 'helpers/dto'
-import { Order } from 'helpers/types'
 import { useAuth } from 'hooks/useApi'
 
 import { Field, Wrapper } from './Profile.styles'

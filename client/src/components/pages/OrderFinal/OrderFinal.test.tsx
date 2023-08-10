@@ -2,6 +2,7 @@ import { Provider } from 'react-redux'
 
 import userEvent from '@testing-library/user-event'
 import { clear } from 'features/basketSlice'
+import { UserFromApiDto } from 'helpers/dto'
 import { Fragrance, OrderDetails, User } from 'helpers/types'
 import * as hooks from 'hooks/useApi'
 import configureStore from 'redux-mock-store'
@@ -12,7 +13,7 @@ import OrderFinal from './OrderFinal'
 
 const mockStore = configureStore([])
 
-const getMockAuth = (user: User | null) => ({
+const getMockAuth = (user: UserFromApiDto | null) => ({
   user,
   signIn: vi.fn(),
   signOut: vi.fn(),
@@ -21,8 +22,10 @@ const getMockAuth = (user: User | null) => ({
   addOrder: vi.fn(),
 })
 
-const mockUser: User = {
-  _id: '1',
+const mockUser: UserFromApiDto = {
+  id: '1',
+  password: 'testPassword',
+  data: 'testData',
   email: 'test@test.com',
   firstName: 'TestName',
   lastName: 'TestSurname',
@@ -39,7 +42,7 @@ const mockOrder: OrderDetails = {
 }
 
 const fragrance1: Fragrance = {
-  fragranceName: 'Fragrance 1',
+  name: 'Fragrance 1',
   capacity: 100,
   price: 50,
   src: 'image1.jpg',
@@ -47,7 +50,7 @@ const fragrance1: Fragrance = {
 }
 
 const fragrance2: Fragrance = {
-  fragranceName: 'Fragrance 2',
+  name: 'Fragrance 2',
   capacity: 200,
   price: 75,
   src: 'image2.jpg',
