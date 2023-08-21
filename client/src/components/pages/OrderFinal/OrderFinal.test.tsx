@@ -2,8 +2,7 @@ import { Provider } from 'react-redux'
 
 import userEvent from '@testing-library/user-event'
 import { clear } from 'features/basketSlice'
-import { UserFromApiDto } from 'helpers/dto'
-import { Fragrance, OrderDetails, User } from 'helpers/types'
+import { Fragrance, FrontendUserInterface, OrderDetails } from 'helpers/types'
 import * as hooks from 'hooks/useApi'
 import configureStore from 'redux-mock-store'
 import { render, screen, waitFor } from 'test-utils'
@@ -13,7 +12,7 @@ import OrderFinal from './OrderFinal'
 
 const mockStore = configureStore([])
 
-const getMockAuth = (user: UserFromApiDto | null) => ({
+const getMockAuth = (user: FrontendUserInterface | null) => ({
   user,
   signIn: vi.fn(),
   signOut: vi.fn(),
@@ -22,7 +21,7 @@ const getMockAuth = (user: UserFromApiDto | null) => ({
   addOrder: vi.fn(),
 })
 
-const mockUser: UserFromApiDto = {
+const mockUser: FrontendUserInterface = {
   id: '1',
   password: 'testPassword',
   data: 'testData',

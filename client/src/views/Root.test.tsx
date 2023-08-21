@@ -1,5 +1,4 @@
-import { UserFromApiDto } from 'helpers/dto'
-import { User } from 'helpers/types'
+import { FrontendUserInterface } from 'helpers/types'
 import * as hooks from 'hooks/useApi'
 import { render, screen } from 'test-utils'
 import { vi } from 'vitest'
@@ -16,7 +15,7 @@ const testUser = {
   orders: [{ id: '1', amount: 1, name: 'Test', price: 150, capacity: 100 }],
 }
 
-const getMockAuth = (user: UserFromApiDto | null) => ({
+const getMockAuth = (user: FrontendUserInterface | null) => ({
   user,
   signIn: vi.fn(),
   signOut: vi.fn(),

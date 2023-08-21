@@ -20,8 +20,6 @@ const OrderFinal = () => {
   const totalPrice = basket.reduce((acc, { price, amount }) => (acc += price * amount), 0)
 
   const handleClick = () => {
-    // console.log(basket)
-
     addOrder(basket)
     dispatch(clear())
     navigate('/')

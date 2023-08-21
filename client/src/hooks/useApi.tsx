@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 import AxiosApi from 'axios.config'
 import {
-  UserFromApiDto,
   mapApiDataDtoFromBackendToFrontend,
-  mapBasketDataDtoToBackend,
-} from 'helpers/dto'
-import { ApiContextType, Basket, LoginData } from 'helpers/types'
+  mapBasketDataDtoFromFrontendToBackend,
+} from 'helpers/dto/dto'
+import { ApiContextType, Basket, FrontendUserInterface, LoginData } from 'helpers/types'
 
 interface Props {
   children: ReactNode
@@ -17,7 +16,7 @@ interface Props {
 const ApiContext = React.createContext<ApiContextType | undefined>(undefined)
 
 export const ApiProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<UserFromApiDto | null>(null)
+  const [user, setUser] = useState<FrontendUserInterface | null>(null)
   const [error, setError] = useState<string>('')
   const navigate = useNavigate()
 
@@ -82,7 +81,9 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
   const addOrder = async (basket: Basket[]): Promise<void> => {
     try {
       // mapFrontendDataDtoToBackend(basket)
-      const dtoBasket = mapBasketDataDtoToBackend(basket)
+      const dtoBasket = mapBasketDataDtoFromFrontendToBackend(basket)
+      console.log('basket', basket)
+      console.log('dtoBasket', dtoBasket)
 
       await AxiosApi.post('/api/users/addOrder', {
         email: user?.email,
