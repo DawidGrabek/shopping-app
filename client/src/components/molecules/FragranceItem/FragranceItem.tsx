@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from 'app/store'
-import { Fragrance } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import { FragranceImage } from 'components/atoms/FragranceImage/FragranceImage.styles'
 import { FragranceName } from 'components/atoms/FragranceName/FragranceName.styles'
 import { deleteItem } from 'features/basketSlice'
+import { Fragrance } from 'helpers/types'
 import PropTypes from 'prop-types'
 
 import { AmountSelect, ButtonAndSelectWrapper, Wrapper } from './FragranceItem.styles'
@@ -14,7 +14,7 @@ import { AmountSelect, ButtonAndSelectWrapper, Wrapper } from './FragranceItem.s
 const arrayFrom0ToN = (N: number) => Array.from({ length: N + 1 }, (_, i) => i)
 
 interface FragranceItemProps {
-  fragranceName: string
+  name: string
   capacity: number
   price: number
   src: string
@@ -29,7 +29,7 @@ interface FragranceItemProps {
 }
 
 const FragranceItem: React.FC<FragranceItemProps> = ({
-  fragranceName,
+  name,
   capacity,
   price,
   src,
@@ -59,20 +59,20 @@ const FragranceItem: React.FC<FragranceItemProps> = ({
 
   const handleBasketInput = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (editAmount) {
-      editAmount({ fragranceName, capacity, price, src, amount: +e.target.value })
+      editAmount({ name, capacity, price, src, amount: +e.target.value })
     }
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (addToBasket) {
-      addToBasket({ fragranceName, capacity, price, src, amount: listAmount })
+      addToBasket({ name, capacity, price, src, amount: listAmount })
     }
   }
   const handleOpenFragranceDetails = () => {
     if (openFragranceDetails) {
       openFragranceDetails({
-        fragranceName,
+        name,
         capacity,
         price,
         src,
@@ -84,7 +84,7 @@ const FragranceItem: React.FC<FragranceItemProps> = ({
   const handleClick = () => {
     if (setCurrentFragrance) {
       setCurrentFragrance({
-        fragranceName,
+        name,
         capacity,
         price,
         src,
@@ -103,11 +103,11 @@ const FragranceItem: React.FC<FragranceItemProps> = ({
     >
       <FragranceImage
         src={src}
-        alt={`${fragranceName} fragrance`}
+        alt={`${name} fragrance`}
         onClick={handleOpenFragranceDetails}
         data-testid="fragrance-image"
       />
-      <FragranceName>{`${fragranceName} ${capacity}ml, ${price}zł`}</FragranceName>
+      <FragranceName>{`${name} ${capacity}ml, ${price}zł`}</FragranceName>
       <ButtonAndSelectWrapper as="form" onSubmit={(e) => handleSubmit(e)}>
         {isBasketList ? (
           <AmountSelect value={editableAmount} onChange={(e) => handleBasketInput(e)}>
@@ -137,7 +137,7 @@ const FragranceItem: React.FC<FragranceItemProps> = ({
 }
 
 FragranceItem.propTypes = {
-  fragranceName: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   capacity: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,

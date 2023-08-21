@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import loginSchema from 'assets/schemas/loginSchema'
-import { LoginData } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
+import { LoginData } from 'helpers/types'
 import { useAuth } from 'hooks/useApi'
 
 import { Wrapper } from './Login.styles'

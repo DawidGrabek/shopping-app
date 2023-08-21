@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { BasketState, Fragrance } from 'assets/types'
+import { BasketState, Fragrance } from 'helpers/types'
 
 export const initialState: BasketState = { basket: [] }
 
@@ -10,7 +10,7 @@ export const basketSlice = createSlice({
     add: (state, action: PayloadAction<Fragrance>) => {
       const newFragrance = action.payload
       const existingFragrance = state.basket.find(
-        (fragrance) => fragrance.fragranceName === newFragrance.fragranceName
+        (fragrance) => fragrance.name === newFragrance.name
       )
 
       if (existingFragrance) {
@@ -23,7 +23,7 @@ export const basketSlice = createSlice({
     },
     edit: (state, action: PayloadAction<Fragrance>) => {
       state.basket = state.basket.map((fragrance) =>
-        fragrance.fragranceName === action.payload.fragranceName ? action.payload : fragrance
+        fragrance.name === action.payload.name ? action.payload : fragrance
       )
     },
     deleteItem: (state) => {

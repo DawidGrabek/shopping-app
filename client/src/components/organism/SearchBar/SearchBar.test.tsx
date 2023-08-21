@@ -31,11 +31,20 @@ describe('<SearchBar />', () => {
     const fragrance = await screen.findByText(/Yves Saint Laurent/i)
     userEvent.click(fragrance)
 
-    const selectedFragrance: any = data.find((item) => item.fragranceName === fragrance.innerHTML)
+    const selectedFragrance: any = data.find((item) => item.name === fragrance.innerHTML)
 
     await waitFor(() => {
       screen.findByText(selectedFragrance.price)
       screen.findByText(selectedFragrance.capacity)
     })
+  })
+
+  it('Show message about empty result', async () => {
+    render(<SearchBar />)
+
+    const searchInput = screen.getByPlaceholderText('Search')
+    userEvent.type(searchInput, 'nothingToShow')
+
+    screen.getByText(/There are nothing/i)
   })
 })

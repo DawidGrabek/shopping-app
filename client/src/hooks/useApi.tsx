@@ -1,9 +1,13 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { ApiContextType, Basket, LoginData, User } from 'assets/types'
 import { AxiosError } from 'axios'
 import AxiosApi from 'axios.config'
+import {
+  mapApiDataDtoFromBackendToFrontend,
+  mapBasketDataDtoFromFrontendToBackend,
+} from 'helpers/dto/dto'
+import { ApiContextType, Basket, FrontendUserInterface, LoginData } from 'helpers/types'
 
 interface Props {
   children: ReactNode
@@ -12,7 +16,7 @@ interface Props {
 const ApiContext = React.createContext<ApiContextType | undefined>(undefined)
 
 export const ApiProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<FrontendUserInterface | null>(null)
   const [error, setError] = useState<string>('')
   const navigate = useNavigate()
 
@@ -22,7 +26,10 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
       (async () => {
         try {
           const response = await AxiosApi.get('/api/data')
-          setUser(response.data)
+
+          const dtoResponse = mapApiDataDtoFromBackendToFrontend(response.data)
+
+          setUser(dtoResponse)
         } catch (e: unknown) {
           // don't handle error, because after token expiration error will be thrown
           // setError('Invalid token')
@@ -33,7 +40,10 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
   const signIn = async (formData: LoginData): Promise<void> => {
     try {
       const response = await AxiosApi.post('/api/auth', formData)
-      setUser(response.data.user)
+
+      const dtoResponse = mapApiDataDtoFromBackendToFrontend(response.data.user)
+
+      setUser(dtoResponse)
       localStorage.setItem('token', response.data.data)
     } catch (error: unknown) {
       if (
@@ -68,16 +78,25 @@ export const ApiProvider: React.FC<Props> = ({ children }) => {
     }
   }
 
-  const addOrder = async (basket: Basket): Promise<void> => {
+  const addOrder = async (basket: Basket[]): Promise<void> => {
     try {
+      // mapFrontendDataDtoToBackend(basket)
+      const dtoBasket = mapBasketDataDtoFromFrontendToBackend(basket)
+      console.log('basket', basket)
+      console.log('dtoBasket', dtoBasket)
+
       await AxiosApi.post('/api/users/addOrder', {
         email: user?.email,
-        orders: basket,
+        orders: dtoBasket,
       })
 
       // After adding new order you should get new data
       const response = await AxiosApi.get('/api/data')
-      setUser(response.data)
+
+      const dtoResponse = mapApiDataDtoFromBackendToFrontend(response.data)
+      setUser(dtoResponse)
+
+      // setUser(response.data)
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         console.error('Error adding basket to user', error)

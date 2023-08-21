@@ -1,4 +1,4 @@
-import { BasketState } from 'assets/types'
+import { BasketState } from 'helpers/types'
 
 import basketReducer, { add, deleteItem, edit, clear } from './basketSlice'
 

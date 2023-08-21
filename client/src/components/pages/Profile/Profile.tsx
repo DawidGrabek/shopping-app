@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Order } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
+import { FrontendOrderInterface } from 'helpers/types'
 import { useAuth } from 'hooks/useApi'
 
 import { Field, Wrapper } from './Profile.styles'
@@ -9,7 +9,7 @@ import { Field, Wrapper } from './Profile.styles'
 const Profile: React.FC = () => {
   const { signOut, user } = useAuth()
 
-  const orderTotalPrice = (order: Order) => order.price * order.amount
+  const orderTotalPrice = (order: FrontendOrderInterface) => order.price * order.amount
 
   return (
     <Wrapper>
@@ -24,9 +24,9 @@ const Profile: React.FC = () => {
         Email: <span>{user?.email}</span>
       </Field>
       <ul>
-        {user?.orders.map((order: Order) => (
-          <li key={order._id}>
-            {order.amount} x {order.fragranceName} - {orderTotalPrice(order)}zł
+        {user?.orders.map((order: FrontendOrderInterface) => (
+          <li key={order.id}>
+            {order.amount} x {order.name} - {orderTotalPrice(order)}zł
           </li>
         ))}
       </ul>

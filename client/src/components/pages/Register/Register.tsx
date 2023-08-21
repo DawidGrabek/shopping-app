@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import registerSchema from 'assets/schemas/registerSchema'
-import { RegisterData } from 'assets/types'
 import Button from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
+import { RegisterData } from 'helpers/types'
 import { useAuth } from 'hooks/useApi'
 
 import { Wrapper } from './Register.styles'

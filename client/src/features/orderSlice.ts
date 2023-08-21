@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { OrderDetails } from 'assets/types'
+import { OrderDetails } from 'helpers/types'
 
 const initialState: { order: OrderDetails } = {
   order: {

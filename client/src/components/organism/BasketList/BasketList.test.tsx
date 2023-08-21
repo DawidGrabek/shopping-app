@@ -2,7 +2,7 @@ import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom'
 
 import userEvent from '@testing-library/user-event'
-import { Fragrance } from 'assets/types'
+import { Fragrance } from 'helpers/types'
 // import { createMemoryHistory } from 'history'
 import configureStore from 'redux-mock-store'
 import { render, screen } from 'test-utils'
@@ -13,7 +13,7 @@ const mockStore = configureStore([])
 
 describe('<BasketList />', () => {
   const fragrance1: Fragrance = {
-    fragranceName: 'Fragrance 1',
+    name: 'Fragrance 1',
     capacity: 100,
     price: 50,
     src: 'image1.jpg',
@@ -21,7 +21,7 @@ describe('<BasketList />', () => {
   }
 
   const fragrance2: Fragrance = {
-    fragranceName: 'Fragrance 2',
+    name: 'Fragrance 2',
     capacity: 200,
     price: 75,
     src: 'image2.jpg',

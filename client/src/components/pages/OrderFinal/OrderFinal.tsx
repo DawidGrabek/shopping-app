@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -90,7 +89,7 @@ const OrderFinal = () => {
         <h2>Products:</h2>
         {basket.map((order, i) => (
           <span key={i}>
-            {order.amount} x {order.fragranceName} - {order.price}zł
+            {order.amount} x {order.name} - {order.price}zł
           </span>
         ))}
         <TotalPrice>

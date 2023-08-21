@@ -1,4 +1,4 @@
-import { User } from 'assets/types'
+import { FrontendUserInterface } from 'helpers/types'
 import * as hooks from 'hooks/useApi'
 import { render, screen } from 'test-utils'
 import { vi } from 'vitest'
@@ -6,14 +6,16 @@ import { vi } from 'vitest'
 import Root from './Root'
 
 const testUser = {
-  _id: '1',
+  id: '1',
+  password: 'testPassword',
+  data: 'testData',
   email: 'test@test.com',
   firstName: 'TestName',
   lastName: 'TestSurname',
-  orders: [{ _id: '1', amount: 1, fragranceName: 'Test', price: 150, capacity: 100 }],
+  orders: [{ id: '1', amount: 1, name: 'Test', price: 150, capacity: 100 }],
 }
 
-const getMockAuth = (user: User | null) => ({
+const getMockAuth = (user: FrontendUserInterface | null) => ({
   user,
   signIn: vi.fn(),
   signOut: vi.fn(),

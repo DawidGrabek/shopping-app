@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
 
 import userEvent from '@testing-library/user-event'
-import { OrderDetails } from 'assets/types'
+import { OrderDetails } from 'helpers/types'
 import configureStore from 'redux-mock-store'
 import { render, screen, waitFor } from 'test-utils'
 import { Mock, vi } from 'vitest'
