@@ -1,12 +1,12 @@
 import userEvent from '@testing-library/user-event'
-import { User } from 'helpers/types'
+import { FrontendUserInterface } from 'helpers/types'
 import * as hooks from 'hooks/useApi'
 import { render, screen, waitFor } from 'test-utils'
 import { vi } from 'vitest'
 
 import Login from './Login'
 
-const getMockAuth = (user: User | null) => ({
+const getMockAuth = (user: FrontendUserInterface | null) => ({
   user,
   signIn: vi.fn(),
   signOut: vi.fn(),

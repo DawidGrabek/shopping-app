@@ -1,4 +1,4 @@
-import { mapApiDataDtoFromBackendToFrontend, mapBasketDataDtoFromFrontendToBackend } from './dto' 
+import { mapApiDataDtoFromBackendToFrontend, mapBasketDataDtoFromFrontendToBackend } from './dto'
 
 describe('DTO', () => {
   const backendUserMock = {

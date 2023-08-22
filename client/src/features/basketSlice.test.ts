@@ -12,7 +12,7 @@ describe('basketSlice', () => {
   it('Should add new fragrance to basket', () => {
     const fragrance = {
       src: 'http://1',
-      fragranceName: 'test',
+      name: 'test',
       capacity: 100,
       price: 100,
       amount: 1,
@@ -27,7 +27,7 @@ describe('basketSlice', () => {
   it('Should increase amount if you add the same fragrance', () => {
     const fragrance = {
       src: 'http://1',
-      fragranceName: 'test',
+      name: 'test',
       capacity: 100,
       price: 100,
       amount: 1,
@@ -46,7 +46,7 @@ describe('basketSlice', () => {
   it('Should edit amount of fragrance', () => {
     const fragrance = {
       src: 'http://1',
-      fragranceName: 'test',
+      name: 'test',
       capacity: 100,
       price: 100,
       amount: 5,
@@ -63,7 +63,7 @@ describe('basketSlice', () => {
   it('Should delete fragrance if amount is 0', () => {
     const fragrance = {
       src: 'http://1',
-      fragranceName: 'test',
+      name: 'test',
       capacity: 100,
       price: 100,
       amount: 0,
@@ -79,7 +79,7 @@ describe('basketSlice', () => {
   it('Should not delete fragrance if amount is different 0', () => {
     const fragrance = {
       src: 'http://1',
-      fragranceName: 'test',
+      name: 'test',
       capacity: 100,
       price: 100,
       amount: 3,
@@ -97,14 +97,14 @@ describe('basketSlice', () => {
   it('Should clear basket', () => {
     const fragrance = {
       src: 'http://1',
-      fragranceName: 'test',
+      name: 'test',
       capacity: 100,
       price: 100,
       amount: 3,
     }
     const fragrance2 = {
       src: 'http://1',
-      fragranceName: 'test',
+      name: 'test',
       capacity: 100,
       price: 100,
       amount: 3,
