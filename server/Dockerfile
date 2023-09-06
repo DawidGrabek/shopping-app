@@ -2,6 +2,10 @@ FROM node:16.14 AS development
 
 WORKDIR /usr/src/app
 
+# Pass the MongoDB hostname and port as environment variables
+ENV MONGODB_HOST=mongo
+ENV MONGODB_PORT=27017
+
 # Install nodemon globally
 RUN npm install -g nodemon
 
