@@ -6,19 +6,15 @@ WORKDIR /usr/src/app
 ENV MONGODB_HOST=mongo
 ENV MONGODB_PORT=27017
 
-# Install nodemon globally
-RUN npm install -g nodemon
-
-# Install build tools
-RUN apt-get update && apt-get install -y build-essential
-
 COPY package.json /usr/src/app/package.json
 COPY package-lock.json /usr/src/app/package-lock.json
 
 RUN npm install
 
+# Get all the code needed to run the app
 COPY . /usr/src/app
 
+# Expose the port the app runs in
 EXPOSE 8080
 
 CMD [ "npm", "run", "dev"]
