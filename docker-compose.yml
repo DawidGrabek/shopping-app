@@ -10,6 +10,8 @@ services:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules/
     restart: always
+    environment:
+       - CHOKIDAR_USEPOLLING=true
     networks:
       - react-express
     depends_on:
