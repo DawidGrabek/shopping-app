@@ -25,6 +25,7 @@
     "yup": "^1.2.0"
   },
   "scripts": {
+    "dev": "vite --host",
     "start": "vite",
     "build": "vite build",
     "serve": "vite preview",
